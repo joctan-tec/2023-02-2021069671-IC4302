@@ -4,7 +4,7 @@ dashboards:
   mariadb:
     name: mariadb
     file: mariadb.json
-    enable: true
+    enable: false
 
   elasticsearch:
     name: elasticsearch
@@ -19,9 +19,9 @@ dashboards:
   postgresqlha:
     name: postgresqlha
     file: postgresqlha.json
-    enable: true
+    enable: false
 
   mariadbgal:
     name: mariadbgal
     file: mariadbgal.json
-    enable: true
+    enable: false

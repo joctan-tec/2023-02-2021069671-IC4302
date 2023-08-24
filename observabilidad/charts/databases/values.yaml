@@ -1,5 +1,5 @@
 mariadb:
-  enabled: true
+  enabled: false
   metrics:
     enabled: true
     serviceMonitor:
@@ -23,7 +23,7 @@ mongodb:
       namespace: monitoring
 
 postgresqlha:
-  enabled: true
+  enabled: false
   metrics:
     enabled: true
     serviceMonitor:
@@ -31,7 +31,7 @@ postgresqlha:
       namespace: monitoring
 
 mariadbgal:
-  enabled: true
+  enabled: false
   metrics:
     enabled: true
     serviceMonitor:
