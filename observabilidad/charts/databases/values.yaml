@@ -7,7 +7,7 @@ mariadb:
       namespace: "monitoring"
 
 elasticsearch:
-  enabled: true
+  enabled: false
   metrics:
     enabled: true
     serviceMonitor:
