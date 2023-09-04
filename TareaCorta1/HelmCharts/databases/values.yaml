@@ -1,0 +1,96 @@
+
+# Configuraciones  Temporales, para que salgan en prometheus con las metricas que quieren se deben cambiar
+
+mariadb:
+  enabled: false
+  version: 11.4.6
+  architecture: replication
+  primary:
+    name: "primary-node"
+    replicaCount: 1
+  secondary:
+    name: "secondary-node"
+    replicaCount: 2
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: "monitoring"
+  auth:
+    rootPassword: "tc1"
+
+mariadb-galera:
+  enabled: false
+  version: 7.4.14
+  replicaCount: 3
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: "monitoring"
+  rootUser:
+    password: "tc1"
+  db:
+    password: "tc1"
+
+elasticsearch:
+
+  clusterName: "elasticsearch"
+  nodeGroup: "master"
+  replicas: 3
+  minimumMasterNodes: 1
+  enabled: false
+  version: 8.6.1
+  name: elastic-tc1
+
+kibana:
+  version: 8.6.1
+  replicas: 1
+  name: elastic-tc1
+
+prometheus-elasticsearch-exporter:
+  env:
+    ES_USERNAME: elastic
+  extraEnvSecrets:
+    ES_PASSWORD:
+      secret: elastic-tc1-es-elastic-user
+      key: elastic
+
+postgresql-ha:
+  enabled: false
+  version: 11.1.2
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: "monitoring"
+  global:
+    postgresql:
+      password: "tc1"
+    pgpool:
+      adminPassword: "tc1"
+
+postgresql:
+  enabled: false
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: "monitoring"
+  auth:
+    postgresPassword: "1234"
+    database: "booksummaries"
+
+mongodb:
+  enabled: true
+  version: 13.6.7
+  architecture: replicaset
+  replicaCount: 3
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: "monitoring"
+  auth:
+     rootPassword: "tc1"
+

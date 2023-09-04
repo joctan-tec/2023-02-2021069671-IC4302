@@ -1,0 +1,5 @@
+namespaces:
+  - app
+  - databases
+  - grafana-config
+  - monitoring
