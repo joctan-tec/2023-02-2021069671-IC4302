@@ -5,6 +5,7 @@
 # ./automatizacion.sh
 helm repo add elastic https://helm.elastic.co
 helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
 # Los namespaces se generan en el helm chart bootstrap
@@ -28,7 +29,7 @@ kubectl get pods -n monitoring
 
 # Ahora se instalan las bases de datos dependencia con sus respectivas métriicas
 cd databases
-helm dependency update
+helm dependency build
 cd ..
 helm install databases databases
 

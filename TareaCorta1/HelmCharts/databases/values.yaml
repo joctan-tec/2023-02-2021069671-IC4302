@@ -71,7 +71,7 @@ postgresql-ha:
       adminPassword: "tc1"
 
 postgresql:
-  enabled: false
+  enabled: true
   metrics:
     enabled: true
     serviceMonitor:
@@ -79,10 +79,10 @@ postgresql:
       namespace: "monitoring"
   auth:
     postgresPassword: "1234"
-    database: "booksummaries"
+    database: "books"
 
 mongodb:
-  enabled: true
+  enabled: false
   version: 13.6.7
   architecture: replicaset
   replicaCount: 3
