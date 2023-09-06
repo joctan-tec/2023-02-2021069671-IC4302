@@ -1,9 +1,8 @@
-FROM python:3.9
+FROM python:3.11.5
 
 WORKDIR /app
 
-COPY ./api-postgresql/app/. .
-COPY babynames.csv .
+COPY app/. .
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD [ "python", "-u", "postgreSQLApi.py" ] 
+CMD [ "python", "-u", "app.py" ] 
