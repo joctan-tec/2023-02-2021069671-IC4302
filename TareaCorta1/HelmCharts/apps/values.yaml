@@ -1,0 +1,13 @@
+config:
+  
+  postgresql-schema:
+    mapName: script-db
+    name: postgresql-init
+    volumeName: scripts
+    image: moisose/postgresql-client
+
+  apiPostgresDeployment:
+    replicas: 1
+    name: apipostgres-deployment
+    image: jcardonar/api-postgresql
+    nameApp: apipostgres-deployment
