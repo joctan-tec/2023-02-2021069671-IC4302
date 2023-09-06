@@ -21,6 +21,11 @@ dashboards:
     name: postgresqlha
     file: postgresqlha.json
     enable: true
+
+  postgresql:
+    name: postgresql
+    file: postgresql.json 
+    enable: true
   
   mariadb-galera:
     name: mariadbgal

@@ -1,19 +1,22 @@
 import psycopg2
 from flask import Flask, request, jsonify
 import pandas as panda
+import numpy as np
 
 app = Flask(__name__)
-import numpy as np
+
 
 def db_connection():
     conn = None
     try:
         conn = psycopg2.connect(
-            host='sql9.freesqldatabase.com',
-            database='sql9644463',
-            user='sql9644463',
-            password='Y1uqIiqXm7',
-            cursorclass= psycopg2.cursors.DictCursor)
+            host="localhost",
+            port=5432,
+            database="books",
+            user="postgres",
+            password="1234"
+        )
+
     except:
         print('No se pudo conectar a la base de datos')
     return conn
@@ -25,21 +28,30 @@ def db_connection():
 
 @app.route('/books', methods=['GET', 'POST'])
 def books():
-
     if request.method == 'GET':
+
         conn = db_connection()
         cursor = conn.cursor()
+
         cursor.execute("SELECT * FROM libros")
-        libros = [
-            dict(id=row['id'], name=row['name'], summary=row['summary'], category=row['category'])
-            for row in cursor.fetchall()
-        ]
+        rows = cursor.fetchall()
+
+        libros = []
+        for row in rows:
+            libro = {
+                "id": row[0],
+                "name": row[1],
+                "summary": row[2],
+                "category": row[3]
+            }
+            libros.append(libro)
+
         conn.close()
-        if libros is not None:
+
+        if libros:
             return jsonify(libros)
         else:
             return 'No se encontro nada', 404
-
 
     if request.method == 'POST':
         conn = db_connection()
@@ -64,7 +76,7 @@ def libro_indiv(id):
     if request.method == 'GET':
         conn = db_connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM libros WHERE id=?", (id,))
+        cursor.execute("SELECT * FROM libros WHERE id=%s", (id,))
         rows = cursor.fetchall()
         for r in rows:
             libro = r
@@ -79,10 +91,10 @@ def libro_indiv(id):
         conn = db_connection()
         cursor = conn.cursor()
         sql = """UPDATE libros
-                SET name=?,
-                    summary=?,
-                    category=?
-                WHERE id=?"""
+                SET name=%s,
+                    summary=%s,
+                    category=%s
+                WHERE id=%s"""
 
 
         nombre = request.form['name']
@@ -105,7 +117,7 @@ def libro_indiv(id):
     if request.method == 'DELETE':
         conn = db_connection()
         cursor = conn.cursor()
-        sql = """DELETE FROM libros WHERE id=?"""
+        sql = """DELETE FROM libros WHERE id=%s"""
         cursor.execute(sql,(id,))
         conn.commit()
         conn.close()

@@ -12,9 +12,9 @@ mariadb:
     name: "secondary-node"
     replicaCount: 2
   metrics:
-    enabled: true
+    enabled: false
     serviceMonitor:
-      enabled: true
+      enabled: false
       namespace: "monitoring"
   auth:
     rootPassword: "tc1"
@@ -24,9 +24,9 @@ mariadb-galera:
   version: 7.4.14
   replicaCount: 3
   metrics:
-    enabled: true
+    enabled: false
     serviceMonitor:
-      enabled: true
+      enabled: false
       namespace: "monitoring"
   rootUser:
     password: "tc1"
@@ -55,6 +55,12 @@ prometheus-elasticsearch-exporter:
     ES_PASSWORD:
       secret: elastic-tc1-es-elastic-user
       key: elastic
+  es:
+    uri: http://elastic-tc1-es-http:9200
+    cluster_settings: true
+  serviceMonitor:
+    enabled: true
+    namespace: monitoring
 
 postgresql-ha:
   enabled: false
