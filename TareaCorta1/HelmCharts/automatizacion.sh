@@ -49,7 +49,9 @@ helm install grafana-config grafana-config
 kubectl get secret grafana-admin-credentials -n monitoring -o jsonpath='{.data.GF_SECURITY_ADMIN_PASSWORD}' | base64 --decode; echo
 
 sleep 10
-kubectl port-forward -n monitoring service/grafana-service 3000:3000
+#kubectl port-forward -n monitoring service/grafana-service 3000:3000
+
+# Luego se instala el API adecuado de acuerdo a la base de datos
 
 # localhost:3000
 # username: admin 

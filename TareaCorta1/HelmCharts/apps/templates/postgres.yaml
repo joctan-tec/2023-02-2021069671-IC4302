@@ -1,0 +1,100 @@
+# Este helm chart solo corre si postgres esta encendido
+{{ if .Values.postgresql.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.config.apiPostgresDeployment.name }}
+  labels:
+    app: {{ .Values.config.apiPostgresDeployment.nameApp }}
+spec:
+  replicas: {{ .Values.config.apiPostgresDeployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.config.apiPostgresDeployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.config.apiPostgresDeployment.name }}
+    spec:
+      containers:
+      - name: {{ .Values.config.apiPostgresDeployment.name }}
+        image: {{ .Values.config.apiPostgresDeployment.image }}
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 5000
+        env:
+          - name: PGSQL_HOST
+            value: "databases-postgresql"
+          - name: PGSQL_PASS
+            valueFrom:
+              secretKeyRef:
+                name: databases-postgresql
+                key: postgres-password
+                optional: false
+          - name: PGSQL_DB
+            value: 'babynames'
+          - name: PGSQLUSER
+            value: 'postgres'
+          - name: PGSQL_PORT
+            value: '5432'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.config.apiPostgresDeployment.nameApp }}
+  labels:
+    app: {{ .Values.config.apiPostgresDeployment.nameApp }}
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+    nodePort: 30000
+  selector:
+    app: {{ .Values.config.apiPostgresDeployment.nameApp }}
+  type: NodePort
+
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.config.postgresql.mapName }}
+  namespace: {{ .Values.namespace }}
+data:
+{{ (.Files.Glob "sql/postgres.sql").AsConfig | indent 2 }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.config.postgresql.name }}
+spec:
+  template:
+    spec:
+      volumes:
+      - name: {{ .Values.config.postgresql.volumeName }}
+        configMap:
+          name: {{ .Values.config.postgresql.mapName }}
+          defaultMode: 0777
+      containers:
+      - name: pi
+        image: {{ .Values.config.postgresql.image }}
+        volumeMounts:
+        - name: {{ .Values.config.postgresql.volumeName }}
+          mountPath: /scripts
+        env:
+          - name: DB_HOST
+            value: "databases-postgresqlha-postgresql"
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: databases-postgresqlha-postgresql
+                key: password
+                optional: false
+        command: ["/bin/sh"]
+        args: ["-c", "PGPASSWORD=$(DB_PASS) psql -h $(DB_HOST) -U postgres -f \"/scripts/postgres.sql\""]
+      restartPolicy: Never
+  backoffLimit: 10
+{{ end }}
+
+{{ end }}
