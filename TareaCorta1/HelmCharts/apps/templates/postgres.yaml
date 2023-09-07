@@ -1,94 +1,96 @@
-# Este helm chart solo corre si postgres esta encendido
-{{ if .Values.postgresql.enabled }}
-apiVersion: apps/v1
-kind: Deployment
+# This helm chart only runs if postgres is enabled
+{{ if .Values.config.database.postgresql.enabled}}
+
+# Deployment definition
+apiVersion: apps/v1 # API version for Deployments
+kind: Deployment # Kind of resource
 metadata:
-  name: {{ .Values.config.apiPostgresDeployment.name }}
+  name: {{ .Values.config.apiPostgresql.name }} # Name of the Deployment
   labels:
-    app: {{ .Values.config.apiPostgresDeployment.nameApp }}
+    app: {{ .Values.config.apiPostgresql.nameApp }} # Labels for the Deployment
 spec:
-  replicas: {{ .Values.config.apiPostgresDeployment.replicas }}
-  selector:
+  replicas: {{ .Values.config.apiPostgresql.replicas }} # Number of replica Pods
+  selector: 
     matchLabels:
-      app: {{ .Values.config.apiPostgresDeployment.name }}
+      app: {{ .Values.config.apiPostgresql.name }} # Selector matches Pod labels
   template:
     metadata:
       labels:
-        app: {{ .Values.config.apiPostgresDeployment.name }}
+        app: {{ .Values.config.apiPostgresql.name }} # Labels for the Pod
     spec:
       containers:
-      - name: {{ .Values.config.apiPostgresDeployment.name }}
-        image: {{ .Values.config.apiPostgresDeployment.image }}
-        imagePullPolicy: Always
+      - name: {{ .Values.config.apiPostgresql.name }} # Name of the container
+        image: {{ .Values.config.apiPostgresql.image }} # Container image
+        imagePullPolicy: Always # Image pull policy
         ports:
-          - containerPort: 5000
-        env:
-          - name: PGSQL_HOST
-            value: "databases-postgresql"
-          - name: PGSQL_PASS
-            valueFrom:
-              secretKeyRef:
-                name: databases-postgresql
-                key: postgres-password
-                optional: false
-          - name: PGSQL_DB
-            value: 'babynames'
-          - name: PGSQLUSER
-            value: 'postgres'
-          - name: PGSQL_PORT
-            value: '5432'
-
+        - containerPort: 5000 # Port the container listens on
+        env: # Environment variables
+        - name: Posgres_HOST
+          value: "databases-postgresql" # PostgreSQL host
+        - name: Posgres_PASS
+          valueFrom:
+            secretKeyRef: 
+              name: databases-postgresql # Secret name
+              key: postgres-password # Secret key for password
+              optional: false 
+        - name: Posgres_DB
+          value: 'books' # PostgreSQL database
+        - name: PosgresUSER
+          value: 'postgres' # PostgreSQL user
+        - name: Posgres_PORT
+          value: '5432' # PostgreSQL port
 ---
-apiVersion: v1
+# Service definition
+apiVersion: v1  
 kind: Service
 metadata:
-  name: {{ .Values.config.apiPostgresDeployment.nameApp }}
+  name: {{ .Values.config.apiPostgresql.nameApp }} # Name of the service
   labels:
-    app: {{ .Values.config.apiPostgresDeployment.nameApp }}
+    app: {{ .Values.config.apiPostgresql.nameApp }} # Labels for the service
 spec:
   ports:
-  - port: 5000
+  - port: 5000   # Port that the service exposes
     protocol: TCP
-    targetPort: 5000
-    nodePort: 30000
+    targetPort: 5000 # Container port mapped to service port
+    nodePort: 30000 # Port on each node
   selector:
-    app: {{ .Values.config.apiPostgresDeployment.nameApp }}
-  type: NodePort
+    app: {{ .Values.config.apiPostgresql.nameApp }} # Selects pods with matching labels
+  type: NodePort # Type of service
 
-
+--- 
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.config.postgresql.mapName }}
-  namespace: {{ .Values.namespace }}
+  name: {{ .Values.config.postgresqlclient.mapName }}
+  namespace: {{ .Values.config.postgresqlclient.namespace }}
 data:
-{{ (.Files.Glob "sql/postgres.sql").AsConfig | indent 2 }}
+{{ (.Files.Glob "database-schemas/postgres-schema/postgres.sql").AsConfig | indent 2 }}
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Values.config.postgresql.name }}
+  name: {{ .Values.config.postgresqlclient.name }}
 spec:
   template:
     spec:
       volumes:
-      - name: {{ .Values.config.postgresql.volumeName }}
+      - name: {{ .Values.config.postgresqlclient.volumeName }}
         configMap:
-          name: {{ .Values.config.postgresql.mapName }}
+          name: {{ .Values.config.postgresqlclient.mapName }}
           defaultMode: 0777
       containers:
       - name: pi
-        image: {{ .Values.config.postgresql.image }}
+        image: {{ .Values.config.postgresqlclient.image }}
         volumeMounts:
-        - name: {{ .Values.config.postgresql.volumeName }}
+        - name: {{ .Values.config.postgresqlclient.volumeName }}
           mountPath: /scripts
         env:
           - name: DB_HOST
-            value: "databases-postgresqlha-postgresql"
+            value: "databases-postgresql"
           - name: DB_PASS
             valueFrom:
               secretKeyRef:
-                name: databases-postgresqlha-postgresql
+                name: databases-postgresql
                 key: password
                 optional: false
         command: ["/bin/sh"]
@@ -97,4 +99,3 @@ spec:
   backoffLimit: 10
 {{ end }}
 
-{{ end }}
