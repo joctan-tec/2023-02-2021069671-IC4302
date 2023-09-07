@@ -1,10 +1,10 @@
 sudo docker login
 cd api-postgresql
 
-cd database-schema
-sudo docker build -t jcardonar/postgresql-schema .
+cd database-client
+sudo docker build -t jcardonar/postgresql-client .
 sudo docker images
-sudo docker push jcardonar/postgresql-schema
+sudo docker push jcardonar/postgresql-client
 
 cd ..
 sudo docker build -t jcardonar/api-postgresql .

@@ -51,6 +51,8 @@ kubectl get secret grafana-admin-credentials -n monitoring -o jsonpath='{.data.G
 sleep 10
 #kubectl port-forward -n monitoring service/grafana-service 3000:3000
 
+helm install apps apps
+
 # Luego se instala el API adecuado de acuerdo a la base de datos
 
 # localhost:3000
