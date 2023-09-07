@@ -123,6 +123,3 @@ def libro_indiv(id):
         conn.commit()
         conn.close()
         return "The book with the id: {} has been deleted".format(id), 200
-
-if __name__ == '__main__':
-    app.run()
