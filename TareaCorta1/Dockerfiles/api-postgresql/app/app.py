@@ -2,6 +2,7 @@ import psycopg2
 from flask import Flask, request, jsonify
 import pandas as panda
 import numpy as np
+import os
 
 app = Flask(__name__)
 
@@ -10,11 +11,11 @@ def db_connection():
     conn = None
     try:
         conn = psycopg2.connect(
-            host="localhost",
+            host=os.getenv('Posgres_HOST'),
             port=5432,
-            database="books",
-            user="postgres",
-            password="1234"
+            database=os.getenv('Posgres_DB'),
+            user=os.getenv('PosgresUSER'),
+            password=os.getenv('Posgres_PASS')
         )
 
     except:
