@@ -150,5 +150,5 @@ def libro_indiv(id):
 if __name__ == '__main__':
 
     # Se insertan primero algunos libros en la tabla para las distintas operaciones
-    populate_table(500)
+    #populate_table(500)
     app.run(debug=True, host="0.0.0.0", port=5000)
