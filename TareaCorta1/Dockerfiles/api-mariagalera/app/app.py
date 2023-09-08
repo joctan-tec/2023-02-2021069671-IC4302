@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import mariadb
 import pandas as panda
 import random
+import os
 
 # This class gets data from a source
 class Data:
@@ -22,11 +23,11 @@ class Connection:
     def __new__(self):
         if (self.__instance == None):
             self.__connection = mariadb.connect(
-                                host="localhost",
-                                user="root",
-                                password="tc1",
-                                db="my_database",
-                                port=30005
+                                host=os.getenv('Mariagalera_HOST'),
+                                port=3306,
+                                database=os.getenv('Mariagalera_DB'),
+                                user=os.getenv('MariagaleraUSER'),
+                                password=os.getenv('Mariagalera_PASS')
                                 )
             self.__instance = super(Connection,self).__new__(self)
         return self.__instance
@@ -34,11 +35,11 @@ class Connection:
     def getConnection(self):
         if (self.__connection == None):
             self.__connection = mariadb.connect(
-                                host="localhost",
-                                user="root",
-                                password="tc1",
-                                db="my_database",
-                                port=30005
+                                host=os.getenv('Mariagalera_HOST'),
+                                port=3306,
+                                database=os.getenv('Mariagalera_DB'),
+                                user=os.getenv('MariagaleraUSER'),
+                                password=os.getenv('Mariagalera_PASS')
                                 )
         return self.__connection
     
