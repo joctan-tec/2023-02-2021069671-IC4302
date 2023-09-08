@@ -15,21 +15,21 @@ config:
 
 
   mariagaleraclient:
-    mapName: client-db
+    mapName: m-client-db
     name: mariagalera-base-client
-    volumeName: client-db
+    volumeName: m-client-db
     image: joctan04/mariagalera-client
     namespace: databases
 
   apiMariagalera:
     replicas: 1
-    name: apiMariagalera
+    name: apimariagalera
     image: joctan04/api-mariagalera
-    nameApp: apiMariagalera
+    nameApp: apimariagalera
 
   database:
     postgresql:
       enabled: false
 
-    mariadb-galera:
+    mariadbgalera:
       enabled: true
