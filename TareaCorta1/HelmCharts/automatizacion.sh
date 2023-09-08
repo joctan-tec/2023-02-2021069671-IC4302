@@ -56,4 +56,4 @@ helm install apps apps
 # Luego se instala el API adecuado de acuerdo a la base de datos
 
 # localhost:3000
-# username: admin 
+# username: admin     SFTxI9-tjB6cXA==

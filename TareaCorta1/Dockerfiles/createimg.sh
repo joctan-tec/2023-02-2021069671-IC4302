@@ -1,15 +1,15 @@
-sudo docker login
-cd api-postgresql
+docker login
+cd api-mariadb
 
 cd database-client
-sudo docker build -t jcardonar/postgresql-client .
-sudo docker images
-sudo docker push jcardonar/postgresql-client
+docker build -t edwardandcode/api-mariadb .
+docker images
+docker push edwardandcode/api-mariadb
 
 cd ..
-sudo docker build -t jcardonar/api-postgresql .
-sudo docker images
-sudo docker push jcardonar/api-postgresql
+docker build -t edwardandcode/api-mariadb .
+docker images
+docker push edwardandcode/api-mariadb
 
 
 
