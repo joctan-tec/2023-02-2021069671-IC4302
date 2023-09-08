@@ -79,9 +79,9 @@ postgresql-ha:
 postgresql:
   enabled: true
   metrics:
-    enabled: false
+    enabled: true
     serviceMonitor:
-      enabled: false
+      enabled: true
       namespace: "monitoring"
   auth:
     postgresPassword: "1234"
