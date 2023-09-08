@@ -1,0 +1,101 @@
+# This helm chart only runs if postgres is enabled
+{{ if .Values.config.database.mariadb.enabled}}
+
+# Deployment definition
+apiVersion: apps/v1 # API version for Deployments
+kind: Deployment # Kind of resource
+metadata:
+  name: {{ .Values.config.apiMariaDB.name }} # Name of the Deployment
+  labels:
+    app: {{ .Values.config.apiMariaDB.nameApp }} # Labels for the Deployment
+spec:
+  replicas: {{ .Values.config.apiMariaDB.replicas }} # Number of replica Pods
+  selector: 
+    matchLabels:
+      app: {{ .Values.config.apiMariaDB.name }} # Selector matches Pod labels
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.config.apiMariaDB.name }} # Labels for the Pod
+    spec:
+      containers:
+      - name: {{ .Values.config.apiMariaDB.name }} # Name of the container
+        image: {{ .Values.config.apiMariaDB.image }} # Container image
+        imagePullPolicy: Always # Image pull policy
+        ports:
+        - containerPort: 5000 # Port the container listens on
+        env: # Environment variables
+        - name: mariaDB_HOST
+          value: "databases-mariadb" # PostgreSQL host
+        - name: mariaDB_PASS
+          valueFrom:
+            secretKeyRef: 
+              name: databases-mariadb # Secret name
+              key: mariadb-root-password # Secret key for password
+              optional: false 
+        - name: MariaDB_DB
+          value: 'books' # PostgreSQL database
+        - name: MariaDBUSER
+          value: 'mariadb' # PostgreSQL user
+        - name: MARIADB_PORT
+          value: '3306' # PostgreSQL port
+---
+# Service definition
+apiVersion: v1  
+kind: Service
+metadata:
+  name: {{ .Values.config.apiMariaDB.nameApp }} # Name of the service
+  labels:
+    app: {{ .Values.config.apiMariaDB.nameApp }} # Labels for the service
+spec:
+  ports:
+  - port: 5000   # Port that the service exposes
+    protocol: TCP
+    targetPort: 5000 # Container port mapped to service port
+    nodePort: 30000 # Port recommended for mariadb (can go from  30000-32767)
+  selector:
+    app: {{ .Values.config.apiMariaDB.nameApp }} # Selects pods with matching labels
+  type: NodePort # Type of service
+
+--- 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.config.mariaDBClient.mapName }}
+  namespace: {{ .Values.config.mariaDBClient.namespace }}
+data:
+{{ (.Files.Glob "database-schemas/mariadb-schema/mariadb.sql").AsConfig | indent 2 }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.config.mariaDBClient.name }}
+spec:
+  template:
+    spec:
+      volumes:
+      - name: {{ .Values.config.mariaDBClient.volumeName }}
+        configMap:
+          name: {{ .Values.config.mariaDBClient.mapName }}
+          defaultMode: 0777
+      containers:
+      - name: pi
+        image: {{ .Values.config.mariaDBClient.image }}
+        volumeMounts:
+        - name: {{ .Values.config.mariaDBClient.volumeName }}
+          mountPath: /scripts
+        env:
+          - name: DB_HOST
+            value: "databases-mariadb"
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: databases-mariadb
+                key: mariadb-root-password
+                optional: false
+        command: ["/bin/sh"]
+        args: ["-c", "PGPASSWORD=$(DB_PASS) psql -h $(DB_HOST) -U mariadb -f \"/scripts/mariadb.sql\""]
+      restartPolicy: Never
+  backoffLimit: 10
+{{ end }}
+
