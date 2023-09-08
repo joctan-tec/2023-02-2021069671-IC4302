@@ -33,22 +33,18 @@ def generar_datos_pruebas(num_rows):
     return diccionario_libros
 
 def populate_table(num_rows):
-    conn = db_connection()
-    cursor = conn.cursor()
+    
     sql = """INSERT INTO libros (name, summary, category)
                 VALUES(%s,%s,%s)"""
     
     libros = generar_datos_pruebas(num_rows) 
-    
-    sql = """INSERT INTO libros (name, summary, category)
-                VALUES(%s,%s,%s)"""
   
     for libro in libros:
+        conn = db_connection()
+        cursor = conn.cursor()
         cursor.execute(sql,(libro['name'],libro['summary'],libro['category']))
         conn.commit()
-    
-    conn.close()
-        
+        conn.close()
     
 @app.route('/books', methods=['GET', 'POST'])
 def books():
