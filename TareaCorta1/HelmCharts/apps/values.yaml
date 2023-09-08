@@ -11,7 +11,7 @@ config:
     replicas: 1
     name: apipostgresql
     image: jcardonar/api-postgresql
-    nameApp: apipostgres-deployment
+    nameApp: apipostgresql
 
 
   database:
