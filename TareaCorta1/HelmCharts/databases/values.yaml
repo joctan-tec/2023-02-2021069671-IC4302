@@ -63,7 +63,7 @@ prometheus-elasticsearch-exporter:
     namespace: monitoring
 
 postgresql-ha:
-  enabled: false
+  enabled: true
   version: 11.1.2
   metrics:
     enabled: true
@@ -98,5 +98,5 @@ mongodb:
       enabled: true
       namespace: "monitoring"
   auth:
-     rootPassword: "tc1"
+    rootPassword: "tc1"
 

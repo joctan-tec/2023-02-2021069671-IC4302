@@ -1,5 +1,5 @@
 config:
-  
+
   postgresqlclient:
     mapName: client-db
     name: postgresql-base-client
@@ -27,9 +27,25 @@ config:
     image: joctan04/api-mariagalera
     nameApp: apimariagalera
 
+  postgresqlhaclient:
+    mapName: client-db
+    name: postgresqlha-base-client
+    volumeName: client-db
+    image: vonneumannn/postgresqlha-client
+    namespace: databases
+
+  apiPostgresqlha:
+    replicas: 1
+    name: apipostgresqlha
+    image: vonneumannn/api-postgresqlha
+    nameApp: apipostgresqlha
+
   database:
     postgresql:
-      enabled: true
+      enabled: false
 
     mariadbgalera:
       enabled: false
+
+    postgresqlha:
+      enabled: true
