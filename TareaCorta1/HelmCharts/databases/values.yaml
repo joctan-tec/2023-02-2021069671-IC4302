@@ -77,7 +77,7 @@ postgresql-ha:
       adminPassword: "tc1"
 
 postgresql:
-  enabled: false
+  enabled: true
   metrics:
     enabled: false
     serviceMonitor:

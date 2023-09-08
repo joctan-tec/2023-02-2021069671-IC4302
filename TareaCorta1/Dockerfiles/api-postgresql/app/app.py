@@ -96,10 +96,6 @@ def books():
     # Para las pruebas gatling se borra un dato aleatorio de los que se encuentran disponibles, para evitar quedarnos sin datos se inserta el dataset multiples veces
     if request.method == 'DELETE':
         
-        # Con esto se inserta el dataset en la base dos veces para un total de 10400 datos para borrar
-        populate_table(5200)
-        populate_table(5200)
-        
         conn = db_connection()
         cursor = conn.cursor()
         
@@ -170,3 +166,8 @@ def libro_indiv(id):
 
 # Se inserta esa cantidad de datos del dataset en la base de datos
 populate_table(80)  
+
+# Para probar operaciones delete
+# Con esto se inserta el dataset en la base dos veces para un total de 10400 datos para borrar
+# populate_table(5200)
+# populate_table(5200)
