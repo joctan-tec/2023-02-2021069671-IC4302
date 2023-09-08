@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify
 import pandas as panda
 import numpy as np
 import os
+import csv
 
 app = Flask(__name__)
 
@@ -22,18 +23,37 @@ def db_connection():
         print('No se pudo conectar a la base de datos')
     return conn
 
-#lista_libros = panda.read_csv('books-summaries.csv')
-#df = panda.DataFrame(lista_libros.values, columns=['id', 'name', 'summary', 'category'])
-#diccionario_libros = df.to_dict(orient='records')
+# Este metodo abre el csv del dataset y carga algunos datos en la base para hacer pruebas
+# El dataset tiene 5000, este va a insertar los primeros 500 indices
+def generar_datos_pruebas(num_rows):
+    
+    lista_libros = panda.read_csv("books-summaries.csv", nrows=num_rows)
+    df = panda.DataFrame(lista_libros.values, columns=['id', 'name', 'summary', 'category'])
+    diccionario_libros = df.to_dict(orient='records')
+    return diccionario_libros
 
-
+def populate_table(num_rows):
+    
+    sql = """INSERT INTO libros (name, summary, category)
+                VALUES(%s,%s,%s)"""
+    
+    libros = generar_datos_pruebas(num_rows) 
+  
+    for libro in libros:
+        conn = db_connection()
+        cursor = conn.cursor()
+        cursor.execute(sql,(libro['name'],libro['summary'],libro['category']))
+        conn.commit()
+        conn.close()
+    
 @app.route('/books', methods=['GET', 'POST'])
 def books():
     if request.method == 'GET':
 
         conn = db_connection()
         cursor = conn.cursor()
-
+        
+        
         cursor.execute("SELECT * FROM libros")
         rows = cursor.fetchall()
 
@@ -49,8 +69,10 @@ def books():
 
         conn.close()
 
+        
+        
         if libros:
-            return jsonify(libros)
+            return jsonify(insertar_datos_pruebas())
         else:
             return 'No se encontro nada', 404
 
@@ -123,3 +145,10 @@ def libro_indiv(id):
         conn.commit()
         conn.close()
         return "The book with the id: {} has been deleted".format(id), 200
+    
+    
+if __name__ == '__main__':
+
+    # Se insertan primero algunos libros en la tabla para las distintas operaciones
+    populate_table(500)
+    app.run(debug=True, host="0.0.0.0", port=5000)
