@@ -29,7 +29,7 @@ config:
 
   database:
     postgresql:
-      enabled: false
+      enabled: true
 
     mariadbgalera:
-      enabled: true
+      enabled: false
