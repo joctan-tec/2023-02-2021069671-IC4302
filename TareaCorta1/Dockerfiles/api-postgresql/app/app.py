@@ -1,7 +1,7 @@
 import psycopg2
 from flask import Flask, request, jsonify
 import pandas as panda
-import numpy as np
+import random
 import os
 
 app = Flask(__name__)
@@ -43,7 +43,7 @@ def populate_table(num_rows):
         conn.commit()
         conn.close()
 
-@app.route('/books', methods=['GET', 'POST'])
+@app.route('/books', methods=['GET', 'POST', 'DELETE'])
 def books():
     if request.method == 'GET':
 
@@ -66,16 +66,22 @@ def books():
         conn.close()
 
         if libros:
-            return jsonify(libros)
+            return jsonify(libros), 200
         else:
             return 'No se encontro nada', 404
 
     if request.method == 'POST':
+        
+        # Cada vez que se llame post se agarra un indice aleatorio de todos los libros existentes en el dataset
+        libros = generar_datos_pruebas(5200) 
+        index_aleatorio = random.randint(0, len(libros)-1)
+        libro_insertar = libros[index_aleatorio]
+        
         conn = db_connection()
         cursor = conn.cursor()
-        nombre = request.form['name']
-        resumen = request.form['summary']
-        category = request.form['category']
+        nombre = libro_insertar['name']
+        resumen = libro_insertar['summary']
+        category = libro_insertar['category']
 
         sql = """INSERT INTO libros (name, summary, category)
                 VALUES(%s,%s,%s)"""
@@ -83,10 +89,37 @@ def books():
         cursor.execute(sql,(nombre,resumen,category))
         conn.commit()
         conn.close()
-        return f"Book with the id 0 created successfully"
+        return jsonify(libro_insertar), 200
+    
+    
+    # Se recomienda primero reiniciar los helm charts para la base para borrar estos datos despúes de hacer las pruebas
+    # Para las pruebas gatling se borra un dato aleatorio de los que se encuentran disponibles, para evitar quedarnos sin datos se inserta el dataset multiples veces
+    if request.method == 'DELETE':
+        
+        # Con esto se inserta el dataset en la base dos veces para un total de 10400 datos para borrar
+        populate_table(5200)
+        populate_table(5200)
+        
+        conn = db_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute("SELECT * FROM libros")
+        rows = cursor.fetchall()
+        
+        # Se escoge un indice aleatorio a borrar
+        indice_borrar = random.randint(0, len(rows)-1)
+        
+        # Se obtiene el id del indice a borrar
+        id_borrar = rows[indice_borrar][0]
+        
+        sql = """DELETE FROM libros WHERE id=%s"""
+        
+        cursor.execute(sql,(id_borrar,))
+        conn.commit()
+        conn.close()
+        return "The book with the id: {} has been deleted".format(id_borrar), 200
 
-
-@app.route('/books/<int:id>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/books/<int:id>', methods=['GET', 'PUT'])
 def libro_indiv(id):
 
     libro = None
@@ -104,7 +137,12 @@ def libro_indiv(id):
         else:
             return 'No se encontro', 404
 
+    # Este método va a ingresar a los datos de un libro con ese id y va a ponerle los de otro libro aleatorio
     if request.method == 'PUT':
+        libros = generar_datos_pruebas(5200) 
+        index_aleatorio = random.randint(0, len(libros)-1)
+        datos_modificar = libros[index_aleatorio]
+        
         conn = db_connection()
         cursor = conn.cursor()
         sql = """UPDATE libros
@@ -114,9 +152,9 @@ def libro_indiv(id):
                 WHERE id=%s"""
 
 
-        nombre = request.form['name']
-        resumen = request.form['summary']
-        categoria = request.form['category']
+        nombre = datos_modificar['name']
+        resumen = datos_modificar['summary']
+        categoria = datos_modificar['category']
 
         libro_actualizado = {
             'id': id,
@@ -130,15 +168,5 @@ def libro_indiv(id):
         conn.close()
         return jsonify(libro_actualizado)
 
-
-    if request.method == 'DELETE':
-        conn = db_connection()
-        cursor = conn.cursor()
-        sql = """DELETE FROM libros WHERE id=%s"""
-        cursor.execute(sql,(id,))
-        conn.commit()
-        conn.close()
-        return "The book with the id: {} has been deleted".format(id), 200
-    
-    
-populate_table(73)  
+# Se inserta esa cantidad de datos del dataset en la base de datos
+populate_table(80)  
