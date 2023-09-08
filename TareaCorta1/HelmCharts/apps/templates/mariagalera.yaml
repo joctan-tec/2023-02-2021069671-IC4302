@@ -1,0 +1,100 @@
+# This helm chart only runs if postgres is enabled
+{{ if .Values.config.database.mariadb-galera.enabled}}
+---
+# Deployment definition
+apiVersion: apps/v1 # API version for Deployments
+kind: Deployment # Kind of resource
+metadata:
+  name: {{ .Values.config.apiMariagalera.name }} # Name of the Deployment
+  labels:
+    app: {{ .Values.config.apiMariagalera.nameApp }} # Labels for the Deployment
+spec:
+  replicas: {{ .Values.config.apiMariagalera.replicas }} # Number of replica Pods
+  selector: 
+    matchLabels:
+      app: {{ .Values.config.apiMariagalera.name }} # Selector matches Pod labels
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.config.apiMariagalera.name }} # Labels for the Pod
+    spec:
+      containers:
+      - name: {{ .Values.config.apiMariagalera.name }} # Name of the container
+        image: {{ .Values.config.apiMariagalera.image }} # Container image
+        imagePullPolicy: Always # Image pull policy
+        ports:
+        - containerPort: 5000 # Port the container listens on
+        env: # Environment variables
+        - name: Mariagalera_HOST
+          value: "databases-mariagalera" # PostgreSQL host
+        - name: Mariagalera_PASS
+          valueFrom:
+            secretKeyRef: 
+              name: databases-mariagalera # Secret name
+              key: mariagalera-password # Secret key for password
+              optional: false 
+        - name: Mariagalera_DB
+          value: 'my_database' # PostgreSQL database
+        - name: MariagaleraUSER
+          value: 'root' # PostgreSQL user
+        - name: Mariagalera_PORT
+          value: '3306' # PostgreSQL port
+---
+# Service definition
+apiVersion: v1  
+kind: Service
+metadata:
+  name: {{ .Values.config.apiMariagalera.nameApp }} # Name of the service
+  labels:
+    app: {{ .Values.config.apiMariagalera.nameApp }} # Labels for the service
+spec:
+  ports:
+  - port: 5000   # Port that the service exposes
+    protocol: TCP
+    targetPort: 5000 # Container port mapped to service port
+    nodePort: 30000 # Port on each node
+  selector:
+    app: {{ .Values.config.apiMariagalera.nameApp }} # Selects pods with matching labels
+  type: NodePort # Type of service
+
+--- 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.config.mariagaleraclient.mapName }}
+  namespace: {{ .Values.config.mariagaleraclient.namespace }}
+data:
+{{ (.Files.Glob "database-schemas/mariadbgal-schema/mariadbgal.sql").AsConfig | indent 2 }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.config.mariagaleraclient.name }}
+spec:
+  template:
+    spec:
+      volumes:
+      - name: {{ .Values.config.mariagaleraclient.volumeName }}
+        configMap:
+          name: {{ .Values.config.mariagaleraclient.mapName }}
+          defaultMode: 0777
+      containers:
+      - name: pi
+        image: {{ .Values.config.mariagaleraclient.image }}
+        volumeMounts:
+        - name: {{ .Values.config.mariagaleraclient.volumeName }}
+          mountPath: /scripts
+        env:
+          - name: DB_HOST
+            value: "databases-mariagalera"
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: databases-mariagalera
+                key: password
+                optional: false
+        #command: ["/bin/sh"]
+        #args: ["-c", "PGPASSWORD=$(DB_PASS) psql -h $(DB_HOST) -U mariagalera -f \"/scripts/mariadbgal.sql\""]
+      restartPolicy: Never
+  backoffLimit: 10
+{{ end }}
