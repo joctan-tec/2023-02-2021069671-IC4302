@@ -111,7 +111,9 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 
 # Resultados de las pruebas
 
+
 # MariaDB
+
 
 # MariaDB Galera
 
@@ -131,6 +133,7 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/474a0216-ceaa-4876-99ec-ed39225cabd8)
 
+
 # PostGreSQL
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1cfe9cf-dfb4-45d6-82c7-0ff96adb4c3f)
@@ -138,13 +141,20 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b583813a-6e77-424e-bc7f-03b5a29cfc8c)
 
+
 # PostGRE HA
+
+
 
 # Elasticsearch 
 
+
+
 # Resultados en Grafana 
 
+
 # MariaDB
+
 
 
 # MariaDB Galera
@@ -182,8 +192,9 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 # PostGRE HA
 
 
-
 # ElasticSearch 
+
+
 
 # Aspectos Adicionales
 
