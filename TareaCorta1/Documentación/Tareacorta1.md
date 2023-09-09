@@ -171,10 +171,17 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 # PostGreSQL
 
+* GET
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1cfe9cf-dfb4-45d6-82c7-0ff96adb4c3f)
 
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b583813a-6e77-424e-bc7f-03b5a29cfc8c)
+
+
+* POST
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/d7902205-e77a-4a0e-ba97-147b2cf9000b)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/4c14cf58-d9d0-44d0-be9d-c7cb6f5b7743)
 
 
 
@@ -208,6 +215,8 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 # PostGreSQL
 
+* GET
+
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1743530-bd54-467d-a34d-9ec2dea569f5)
 
 
@@ -224,6 +233,43 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/859f7c71-8211-4df7-bbf0-46e1c4a1d06d)
+
+* POST
+  
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f3736033-194b-49f6-b163-bc309969bbbf)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/881a96de-5848-4fd7-a639-49d4dfc844b6)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/2c144033-a79b-4f39-ac69-a238be24e419)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/76dc7127-5703-44a6-b657-f6ab8ed2c6c9)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/54e0681b-a8d4-4ad3-a0db-45f82c70c8b7)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/02b442d8-169f-4a85-9c85-bd90d05872df)
+
+* DELETE
+  
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/4a7299ef-c59c-472b-9647-d078f3361593)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f8700f89-10e3-4f12-8c85-5ee04d1ef65f)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/17c9b50c-711a-4873-91f1-934399d3fd7c)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/afc2abbd-40e8-4944-b1ce-cea05782432b)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/6b12be4b-9d89-4136-80c8-16d1315eca84)
+
+
+
+
+
+
+
+
+
+
+
 
 
 # PostGRE HA
