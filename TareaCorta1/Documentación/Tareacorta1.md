@@ -195,6 +195,8 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 # ElasticSearch 
 
 
+# Conclusiones de los resultados de las pruebas de carga
+
 
 # Aspectos Adicionales
 
