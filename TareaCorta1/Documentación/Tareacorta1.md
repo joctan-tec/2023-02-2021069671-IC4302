@@ -10,7 +10,7 @@
 
 * Angel Jiménez Valverde - 2021436942
 * Joselyn Priscilla Jiménez Salgado - 2021022576
-* Jose Ricardo Cardona Quesada - 
+* Jose Ricardo Cardona Quesada - 2021022613
 * Joctan Antonio Porras Esquivel 2021069671
 * Justin Acuña Barrantes 2018093451
 
@@ -114,6 +114,9 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 1- MariaDB
 
 2- MariaDB Galera
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b4e47e4d-53f3-4c3d-b202-27799de167fe)
+Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó.
 
 3- PostGreSQL
 
