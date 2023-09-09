@@ -8,23 +8,23 @@ class LoadTestSpecial extends Simulation {
     .baseUrl("http://localhost:30000")  
 
     // Este metodo escoge dos indices aleatorios en la tabla y modifica los datos de un libro con los del otro
-    val get = scenario("Get all books load test")
+    val get2 = scenario("Get books load test")
     .exec(
-      http("Get all books")
+      http("Get books")
         .get("/books")
         .check(status.is(200)) 
     )
 
-    val post  = scenario("Post books load test")
+    val post2  = scenario("Post many books load test")
     .exec(
-      http("Post books")
+      http("Post many books")
         .post("/books")
         .check(status.is(200)) 
     )
 
-    val delete = scenario("Delete all books load test")
+    val delete2 = scenario("Delete many books load test")
     .exec(
-      http("Delete books")
+      http("Delete many books")
         .delete("/books")
         .check(status.is(200)) 
     )
@@ -32,12 +32,12 @@ class LoadTestSpecial extends Simulation {
   // 100 Usuarios constantes usaran el api en esa funcionalidad por 20minutos
   setUp(
     
-    get.inject(constantUsersPerSec(10) during (2 minutes)),
-    post.inject(constantUsersPerSec(10) during (2 minutes)),
-    delete.inject(constantUsersPerSec(10) during (2 minutes)),
-    get.inject(constantUsersPerSec(10) during (2 minutes)),
-    post.inject(constantUsersPerSec(10) during (6 minutes)),
-    get.inject(constantUsersPerSec(10) during (1 minutes)),
+    get2.inject(constantUsersPerSec(100) during (20 seconds)),
+    post2.inject(constantUsersPerSec(100) during (100 seconds)),
+    delete2.inject(constantUsersPerSec(100) during (10 seconds)),
+    get2.inject(constantUsersPerSec(100) during (100 seconds)),
+    post2.inject(constantUsersPerSec(100) during (10 seconds)),
+    get2.inject(constantUsersPerSec(100) during (10 seconds)),
     
   ).protocols(httpProtocol)
 

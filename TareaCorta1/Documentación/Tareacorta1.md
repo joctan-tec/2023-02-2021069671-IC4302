@@ -126,6 +126,23 @@ Una vez se esta en la carpeta de los helm charts se va a correr el código de au
 Esto comenzará a instalar automáticamente todo, una vez termine se verá algo asi:
 <img src="imgs/guia9.png" alt="Figura5. exportCart" width="320"/>
 
+Ahora si estan instalados los charts y se puede pasar a las pruebas con gatling.
+Para esto se puede usar cualquiera de las 5 pruebas disponibles:
+
+* LoadTestGET
+* LoadTestPUT
+* LoadTestPOST
+* LoadTestDELETE
+* LoadTestSpecial
+
+Cada uno de estos hace loadtests con operaciones diferentes del API para cada base, get obtiene datos de la base, put modifica datos aleatorios,Post inserta datos aleatorios de un datasaet y delete borra datos aleatorios.
+
+Finalmente Special hace una combinación de operaciones get,post,delete todas durante un periodo de tiempo seguido a ver como se afecta la base en cada uno.
+
+Para ejecutar Gatling se debe ingresar al siguiente folder y encontrar el folder donde este ubicado este archivo:
+
+
+
 
 
 # Resultados de las pruebas
