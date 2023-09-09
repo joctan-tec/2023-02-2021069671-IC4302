@@ -17,16 +17,23 @@ class LoadTestGet extends Simulation {
     )
 
   // Este método borra un libro aleatorio, se recomienda insertar el dataset varias veces para evitar quedarse sin elementos que borrar
-  val delete = scenario("Get all books load test")
+  val delete = scenario("Delete all books load test")
     .exec(
-      http("Get all books")
+      http("Delete books")
         .delete("/books")
+        .check(status.is(200)) 
+    )
+
+  val post  = scenario("Post books load test")
+    .exec(
+      http("Post books")
+        .post("/books")
         .check(status.is(200)) 
     )
 
   // Va subiendo los usuarios de 10 a 100 en los primeros 5 minutos y luego constantemente todos iran haciendo gets durante 20min
   setUp(
-    get.inject(
+    post.inject(
       rampUsersPerSec(10) to(100) during(5 minutes),
       constantUsersPerSec(100) during(20 minutes)
     )
