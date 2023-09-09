@@ -25,38 +25,34 @@ appVersion: "1.16.0"
 
 # Se instalan las bases de datos que se esperan monitorear
 dependencies:
-  - name: mariadb
-    repository: https://charts.bitnami.com/bitnami
-    version: "11.4.7"
-    condition: mariadb.enabled
+- name: mariadb
+  repository: https://charts.bitnami.com/bitnami
+  version: "11.4.7"
+  condition: mariadb.enabled
 
-  - name: postgresql
-    version: "12.2.2"
-    repository: https://charts.bitnami.com/bitnami
-    condition: postgresql.enabled
+- name: postgresql
+  version: "12.2.2"
+  repository: https://charts.bitnami.com/bitnami
+  condition: postgresql.enabled
 
-  - name: postgresql-ha
-    version: "11.1.2"
-    repository: https://charts.bitnami.com/bitnami
-    condition: postgresqlha.enabled
-    alias: postgresqlha
+- name: postgresql-ha
+  version: "11.1.2"
+  repository: https://charts.bitnami.com/bitnami
+  condition: postgresqlha.enabled
+  alias: postgresqlha
 
-  - name: mongodb
-    version: "13.6.7"
-    repository: https://charts.bitnami.com/bitnami
-    condition: mongodb.enabled
+- name: mongodb
+  version: "13.6.7"
+  repository: https://charts.bitnami.com/bitnami
+  condition: mongodb.enabled
 
-  - name: mariadb-galera
-    version: "7.4.14"
-    repository: https://charts.bitnami.com/bitnami
-    condition: mariadbgal.enabled
-    alias: mariadbgal
+- name: mariadb-galera
+  version: "7.4.14"
+  repository: https://charts.bitnami.com/bitnami
+  condition: mariadbgal.enabled
+  alias: mariadbgal
 
-  - name: prometheus-elasticsearch-exporter
-    version: "5.0.0"
-    repository: https://prometheus-community.github.io/helm-charts
-    condition: elascticsearch.enabled
-
-  - name: eck-operator
-    version: "2.6.1"
-    repository: https://helm.elastic.co
+- name: prometheus-elasticsearch-exporter
+  version: "5.0.0"
+  repository: https://prometheus-community.github.io/helm-charts
+  condition: elastic.enabled

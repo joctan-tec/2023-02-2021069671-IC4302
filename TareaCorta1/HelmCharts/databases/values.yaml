@@ -2,7 +2,7 @@
 # Configuraciones  Temporales, para que salgan en prometheus con las metricas que quieren se deben cambiar
 
 mariadb:
-  enabled: false
+  enabled: true
   version: 11.4.6
   architecture: replication
   primary:
@@ -33,20 +33,16 @@ mariadb-galera:
   db:
     password: "tc1"
 
-elasticsearch:
-
-  clusterName: "elasticsearch"
-  nodeGroup: "master"
-  replicas: 3
-  minimumMasterNodes: 1
+elastic:
   enabled: false
   version: 8.6.1
-  name: elastic-tc1
+  replicas: 1
+  name: elastic
 
 kibana:
   version: 8.6.1
   replicas: 1
-  name: elastic-tc1
+  name: kibana
 
 prometheus-elasticsearch-exporter:
   env:
@@ -98,5 +94,5 @@ mongodb:
       enabled: true
       namespace: "monitoring"
   auth:
-     rootPassword: "tc1"
+    rootPassword: "tc1"
 

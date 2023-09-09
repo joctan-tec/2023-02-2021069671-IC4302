@@ -12,19 +12,15 @@ sudo docker images
 sudo docker push jcardonar/api-postgresql
 
 cd ..
+
 cd api-mariadb
 
 cd database-client
-docker build -t jcardonar/api-mariadb .
+docker build -t edwardandcode/mariadb-client .
 docker images
-docker push jcardonar/api-mariadb
+docker push edwardandcode/mariadb-client
 
 cd ..
-docker build -t jcardonar/api-mariadb .
+docker build -t edwardandcode/api-mariadb .
 docker images
-docker push jcardonar/api-mariadb
-
-
-# cd Dockerfiles
-# dos2unix createimg.sh
-# ./createimg.sh
+docker push edwardandcode/api-mariadb

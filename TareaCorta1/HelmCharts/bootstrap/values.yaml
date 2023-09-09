@@ -3,3 +3,5 @@ namespaces:
   - databases
   - grafana-config
   - monitoring
+  - elastic
+  - postgresql-ha
