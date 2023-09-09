@@ -1,3 +1,19 @@
+# Documentación Tarea Corta 1
+
+**Tecnológico de Costa Rica**
+
+**IC4302-Bases de Datos II**
+
+**Profesor: Nereo Campos Araya**
+
+**Estudiantes:**
+
+* Angel Jiménez Valverde - 2021436942
+* Joselyn Priscilla Jiménez Salgado - 2021022576
+* Jose Ricardo Cardona Quesada - 
+* Joctan Antonio Porras Esquivel 2021069671
+* Justin Acuña Barrantes 2018093451
+
 # Guía de Instalación
 
 ***Aclaracione importante: Para la guía re recomienda usar visual studio code, ya que imágenes y explicaciones serán basadas en el uso de la terminal WSL en esta aplicación.***
@@ -9,6 +25,7 @@ Para la ejecución de esta tarea es necesario instalar los siguientes elementos:
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - Kubernetes (se puede instalar desde la configuración de Docker Desktop)  
 - [Helm Charts](https://helm.sh/docs/intro/install/)
+- Lens 
 
 En caso de tener Windows, se recomienda instalar WSL (Windows Subsystem for Linux) para poder ejecutar los archivos de automatización.
 
@@ -92,6 +109,37 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 
 <img src="imgs/guia8.png" alt="Figura5. exportCart" width="320"/>
 
+# Resultados de las pruebas 
+
+1- MariaDB
+
+2- MariaDB Galera
+
+3- PostGreSQL
+
+4- PostGRE HA
+
+5- ElasticSearch 
+
+
+
+# Resultados en Grafana 
+
+1- MariaDB
+
+2- MariaDB Galera
+
+3- PostGreSQL
+
+4- PostGRE HA
+
+5- ElasticSearch 
+
+
+# Las conclusiones derivadas de los resultados de las pruebas de carga son las siguientes:
+
+
+
 # Conclusiones y Recomendaciones
 
 ### Pruebas locales antes de Docker
@@ -100,7 +148,7 @@ A la hora de implementar una imagen en Docker se recomienda probar primero el c�
 
 ### Monitorización y generación de reportes 
 
-Los reportes y visualizaciones que se pueden generar a través de métricas y timeseries, usando herramientas como Grafana y Prometheus son claves para tomar acciones y saber los límites de nuestra base de datos.
+Los reportes y visualizaciones que se pueden generar a través de métricas y timeseries, usando herramientas como Grafana y Prometheus son claves para tomar acciones y saber los límites de nuestra base de datos. Utilizar herramientas como Gatling para realizar pruebas de carga es una práctica crucial para garantizar que una aplicación o sistema pueda manejar cargas de trabajo realistas y mantener su rendimiento.
 
 ### Tipos de operaciones en pruebas de carga
 
@@ -118,8 +166,36 @@ Por ejemplo, un dashboard general de una base SQL puede no tener información es
 
 Además, a medida que el sistema crece y hay nuevos datos, habrá que expandir los dashboards. Los dashboards pre-configurados son un buen punto de partida, pero esperar que muestren todas las métricas desde el inicio puede llevar a decepciones. Monitorear sistemas grandes requiere identificar las métricas clave y agregarlas de forma manual y progresiva.
 
-
 ### Ventajas de Docker y Kubernetes para pruebas de API
 
 A la hora de probar APIs localmente, usar Docker y Kubernetes facilita el proceso ya que permiten ejecutar el API simultáneamente con otras aplicaciones si fuera necesario. Esto evita tener que detener otros servicios que usen los mismos puertos o recursos. Además, containerizar la API con Docker hace que su ejecución sea consistente en diferentes entornos. El código se ejecutará de la misma forma sin importar el sistema operativo o dependencias del host. 
+
+### Adherirse a Estándares de Codificación
+
+Establecer y seguir un estándar de codificación dentro del equipo. Esto mejora la consistencia y la legibilidad del código, lo que facilita la colaboración y el mantenimiento. Mantener un enfoque claro en las metas y objetivos, así como dividir las tareas de manera eficiente, garantiza que el equipo pueda avanzar de manera efectiva y evitar desviaciones innecesarias.
+
+### Herramientas de Desarrollo y Control de Versiones
+
+El dominio de herramientas como GitHub y Docker simplifica enormemente la colaboración en equipo y la gestión de proyectos. Facilitan el seguimiento de cambios, la integración de código y aseguran una ejecución consistente de aplicaciones en diferentes entornos, lo que aumenta la eficiencia y la portabilidad de dicho proyecto. Aprender a utilizar herramientas como GitHub es esencial para el desarrollo colaborativo. Familiarizarse con las funcionalidades básicas de control de versiones y colaboración en repositorios.
+
+### Preservación de la Estructura del Proyecto
+
+Mantener la estructura del proyecto a lo largo del tiempo es esencial para la mantenibilidad y la escalabilidad. Evita el caos y la confusión a medida que el proyecto crece y se desarrolla, lo que ahorra tiempo y recursos en el futuro. Esto facilita la gestión y la colaboración eficiente.
+
+### Aprendizaje Continuo
+
+Desarrollar la mentalidad de aprendizaje continuo es valioso no solo para la tarea actual, sino para el crecimiento a largo plazo como profesional. Siempre buscar oportunidades para adquirir nuevas habilidades y conocimientos. No limitarse a lo que se enseña en clase, es decir, repasar los conceptos aprendidos, investigar y profundizar en el tema. La investigación adicional puede proporcionar ideas frescas y enfoques innovadores para el progreso de la tarea.
+
+### Reuniones de Seguimiento Regular
+
+Es fundamental programar reuniones periódicas para evaluar el progreso de la tarea. Estas reuniones permiten mantener a todos los miembros del equipo actualizados y proporcionan un espacio para discutir desafíos y soluciones. Siguiendo el ejemplo del profesor o utilizando una metodología de gestión de proyectos, asegurándose de mantener una estructura organizativa sólida para la tarea. Esto incluye la definición de objetivos claros y la asignación de responsabilidades.
+
+
+
+
+
+
+
+
+
 
