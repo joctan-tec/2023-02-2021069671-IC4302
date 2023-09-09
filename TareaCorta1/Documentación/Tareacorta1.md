@@ -147,8 +147,6 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/ec5c1b49-b5fa-4809-a685-76df024ba296)
 
 
-
-
 3- PostGreSQL
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1743530-bd54-467d-a34d-9ec2dea569f5)
