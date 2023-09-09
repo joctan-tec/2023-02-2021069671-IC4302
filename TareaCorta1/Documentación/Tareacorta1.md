@@ -121,6 +121,8 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 
 Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó.
 
+* GET 
+
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b4f14eaf-d021-4c1b-a503-ded87541052a)
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/28a7052f-edcb-42f9-a17e-9125e053b94d)
@@ -132,6 +134,20 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b9cb5ea8-2870-4963-a20d-e4258685b80a)
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/474a0216-ceaa-4876-99ec-ed39225cabd8)
+
+* Post
+  
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/24778a8f-fe55-45bf-baa7-9cc1dc5df9fc)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/fc56f500-28a3-447b-9ff6-b4c0c8aaa0fd)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/48c93c08-1bc3-427b-989c-c41e1cf5f0bf)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/a0df3630-ab49-42a8-997e-29f40543333c)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/d2077642-1da4-48c8-8bf8-b7e3f35af7da)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/afad8ce7-9be1-4c36-aa0e-f5068143624a)
 
 
 # PostGreSQL
@@ -145,8 +161,6 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 # PostGRE HA
 
 
-
-# Elasticsearch 
 
 
 
@@ -166,6 +180,16 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/bf86d5a2-95d8-4c60-a0b8-47b7d70d1215)
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/ec5c1b49-b5fa-4809-a685-76df024ba296)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/81cbf8ee-c5f5-4d65-9905-c542b2d6953b)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/6627c238-8775-4ce9-81e4-a7d63717f206)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/192c5b4a-8c79-46bf-86d2-e85ffe8a12ac)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b4af8447-f5ae-48f8-9d9a-653c4aaf438b)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/7cd93960-d02a-4b62-b266-c079d5edd66d)
 
 
 # PostGreSQL
@@ -188,11 +212,18 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/859f7c71-8211-4df7-bbf0-46e1c4a1d06d)
 
 
-
 # PostGRE HA
+<<<<<<< HEAD
 Debido a distintos bugs en la API junto con una mal funcionamiento de gatling en la carga de datos masivos, no se lograron realizar las pruebas más intensivas, aun así fue posible rescatar unas gráficas de grafana las cuales mostramos a continuación.
+=======
 
-# ElasticSearch 
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/7772ec3e-21f2-4467-adb1-769102b1818b)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/643a4165-f600-4921-8702-e538acc97d10)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/924cfd61-6718-406e-b9f9-418b1914bcf5)
+>>>>>>> 3eef230fb86a98f6b7b2ee839b9ce93286fd8694
+
 
 
 # Conclusiones de los resultados de las pruebas de carga
