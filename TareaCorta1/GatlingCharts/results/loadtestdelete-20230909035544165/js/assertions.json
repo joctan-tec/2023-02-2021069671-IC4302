@@ -1,0 +1,10 @@
+{
+  "simulation": "LoadTestDelete",
+  "simulationId": "loadtestdelete-20230909035544165",
+  "start": 1694231746433,
+  "description": "",
+  "scenarios": ["Delete all books load test"],
+  "assertions": [
+
+  ]
+}
