@@ -117,8 +117,17 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b4e47e4d-53f3-4c3d-b202-27799de167fe)
 
-Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó.
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b4f14eaf-d021-4c1b-a503-ded87541052a)
 
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/28a7052f-edcb-42f9-a17e-9125e053b94d)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/2b16e071-3ae8-4272-a147-75884a1d3a5d)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b5feaf4d-e5cd-4d91-8a5c-40e88bc2f03e)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b9cb5ea8-2870-4963-a20d-e4258685b80a)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/474a0216-ceaa-4876-99ec-ed39225cabd8)
 
 3- PostGreSQL
 
