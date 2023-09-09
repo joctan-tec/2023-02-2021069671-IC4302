@@ -138,10 +138,11 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 5- ElasticSearch 
 
+# Aspectos Adicionales
 
-# Las conclusiones derivadas de los resultados de las pruebas de carga son las siguientes:
+Para llevar a cabo las pruebas de carga, se requería el uso de Gatling. Sin embargo, no todas las bases de datos disponían de una interfaz que permitiera utilizar puntos finales HTTP directamente. Por lo tanto, fue necesario crear una aplicación intermedia para abordar esta limitación. 
 
-
+Esta aplicación intermedia fue desarrollada en Python utilizando la biblioteca Flask. Cada base de datos tenía su propia API específica. Para ejecutar una API de una base de datos, era necesario tener un entorno de implementación en funcionamiento en Kubernetes. Para lograr esto, se crearon imágenes de Docker para cada API mediante el uso de un Dockerfile. Los nombres de las imágenes se registraron en un archivo ubicado en "stateless/values.yaml", junto con otras configuraciones que se utilizarían para establecer el entorno de implementación, como los nombres y las aplicaciones asociadas.
 
 # Conclusiones y Recomendaciones
 
