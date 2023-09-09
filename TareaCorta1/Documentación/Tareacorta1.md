@@ -1,3 +1,19 @@
+# Documentación Tarea Corta 1
+
+**Tecnológico de Costa Rica**
+
+**IC4302-Bases de Datos II**
+
+**Profesor: Nereo Campos Araya**
+
+**Estudiantes:**
+
+* Angel Jiménez Valverde - 2021436942
+* Joselyn Priscilla Jiménez Salgado - 2021022576
+* Jose Ricardo Cardona Quesada - 
+* Joctan Antonio Porras Esquivel 2021069671
+* Justin Acuña Barrantes 2018093451
+
 # Guía de Instalación
 
 ***Aclaracione importante: Para la guía re recomienda usar visual studio code, ya que imágenes y explicaciones serán basadas en el uso de la terminal WSL en esta aplicación.***
@@ -9,6 +25,7 @@ Para la ejecución de esta tarea es necesario instalar los siguientes elementos:
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - Kubernetes (se puede instalar desde la configuración de Docker Desktop)  
 - [Helm Charts](https://helm.sh/docs/intro/install/)
+- Lens 
 
 En caso de tener Windows, se recomienda instalar WSL (Windows Subsystem for Linux) para poder ejecutar los archivos de automatización.
 
