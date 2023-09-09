@@ -2,7 +2,7 @@
 # Configuraciones  Temporales, para que salgan en prometheus con las metricas que quieren se deben cambiar
 
 mariadb:
-  enabled: false
+  enabled: true
   version: 11.4.6
   architecture: replication
   primary:
@@ -59,7 +59,7 @@ prometheus-elasticsearch-exporter:
     namespace: monitoring
 
 postgresql-ha:
-  enabled: true
+  enabled: false
   version: 11.1.2
   metrics:
     enabled: true

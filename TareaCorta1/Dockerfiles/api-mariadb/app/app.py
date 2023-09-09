@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 import mariadb
+import pandas
+import numpy as np
 import os
 
 app = Flask(__name__)
@@ -13,17 +15,50 @@ def db_connection():
     conn = None
     try:
         conn = mariadb.connect(
-            host = os.getenv('MARIADB_HOST'),
+            host = os.getenv('MariaDB_HOST'),
             port = 3306,            #El port 3306 es el default para mariadb
-            database = os.getenv('MARIADB_DB'),
-            user = os.getenv('MARIADB_USER'),
-            password = os.getenv('MARIADB_PASSWORD')
+            database = os.getenv('MariaDB_DB'),
+            user = os.getenv('MariaDB_USER'),
+            password = os.getenv('MariaDB_PASS')
         )
     except Exception as e:
         print("Fallo al conectarse a la base de datos: Error: " + str(e))
 
     return conn #Retornamos la conexión de red, o sino funcionó retorna None
+
+#Luego creamos una función encargada de generar automáticamente datos
+#de pruebas, tomando la información del csv en el file dataset
+def generar_datos(num_rows):
+    #Leemos la lista de libros, hasta llegar a cumplir las filas deseadas
+    #a leer
+    lista_libros = pandas.read_csv("books-summaries.csv", nrows=num_rows)
     
+    #Luego los diferenciamos o encapsulamos en columnas
+    df = pandas.DataFrame(lista_libros, columns=['id', 'name', 'summary', 'category'])
+    
+    #Luego los ordenamos como un diccionario, tomando como oriente en el dataframe al records
+    diccionario_libros = df.to_dict(orient='records')
+    return diccionario_libros
+
+#Hacemos una función encargada de llenar la base de datos y la tabla de libros
+def populate_table(num_rows):
+    sql = """INSERT INTO libros (name, summary, category)
+            VALUES(%s, %s, %s)"""
+
+    #Luego, guardamos un diccionario con los libros generados
+    libros = generar_datos(num_rows) 
+
+    for libro in libros:
+        #Iteramos en cada libro, para insertar los datos
+        conn = db_connection()
+        cursor = conn.cursor()
+        
+        #Ejecutamos la función sql que llamamos,pasando los datos del dato
+        #iterado en el diccionario libros
+        cursor.execute(sql, (libro['name'], libro['summary'], libro['category']))
+        conn.commit()
+        conn.close()
+
 
 @app.route('/books', methods=['GET', 'POST'])
 def books():
@@ -151,7 +186,12 @@ def libro_indiv(id):
         conn.close()
         return "El libro con la id: {} ha sido eliminado".format(id), 200
 
+"""
 if __name__ ==  "__main__":
     #Programa principal, desde acá se corre el programa, y acá se hace todo lo 
     #del programa
     app.run()
+"""
+
+#Llenamos o populizamos la lista con los datos de los libros
+populate_table(50)

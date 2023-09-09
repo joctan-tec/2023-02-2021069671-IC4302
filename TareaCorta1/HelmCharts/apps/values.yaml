@@ -13,6 +13,18 @@ config:
     image: jcardonar/api-postgresql
     nameApp: apipostgresql
 
+  mariaDBClient:
+    mapName: client-db
+    name: mariadb-base-client
+    volumeName: client-db
+    image: edwardandcode/mariadb-client
+    namespace: databases
+
+  apiMariaDB:
+    replicas: 1
+    name: apimariadb
+    image: edwardandcode/api-mariadb
+    nameApp: apimariadb
 
   mariagaleraclient:
     mapName: m-client-db
@@ -43,6 +55,9 @@ config:
   database:
     postgresql:
       enabled: false
+
+    mariadb:
+      enabled: true
 
     mariadbgalera:
       enabled: false
