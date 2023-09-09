@@ -158,11 +158,6 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b583813a-6e77-424e-bc7f-03b5a29cfc8c)
 
 
-# PostGRE HA
-
-
-
-
 
 # Resultados en Grafana 
 
@@ -227,6 +222,8 @@ Debido a distintos bugs en la API junto con una mal funcionamiento de gatling en
 
 
 # Conclusiones derivadas de los resultados de las pruebas de carga
+
+El propósito de las pruebas de carga fue simular el comportamiento real de una base de datos, manteniendo un flujo constante de usuarios y consultas. A pesar de esto, los resultados mostraron una falta de cambios drásticos entre las distintas pruebas. Es importante señalar que, en la vida real, los usuarios no actúan de manera constante, por lo que los resultados obtenidos no reflejan de manera realista la operación cotidiana. Sin embargo, estas pruebas ayudan a identificar problemas potenciales que pueden surgir en diversos escenarios.
 
 
 # Aspectos Adicionales
