@@ -124,6 +124,7 @@ Una vez se esta en la carpeta de los helm charts se va a correr el código de au
 **`./automatizacion.sh`**
 
 Esto comenzará a instalar automáticamente todo, una vez termine se verá algo asi:
+<<<<<<< HEAD
 <img src="imgs/guia9.png" alt="Figura5. exportCart" width="320"/>
 
 Ahora si estan instalados los charts y se puede pasar a las pruebas con gatling.
@@ -144,11 +145,10 @@ Para ejecutar Gatling se debe ingresar al siguiente folder y encontrar el folder
 
 
 
+=======
+>>>>>>> f80248c3d21774684ad4b15456bce66b170d9d27
 
 # Resultados de las pruebas
-
-
-# MariaDB
 
 
 # MariaDB Galera
@@ -185,12 +185,29 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/afad8ce7-9be1-4c36-aa0e-f5068143624a)
 
+
+# PostGreSQL
+
+* GET
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1cfe9cf-dfb4-45d6-82c7-0ff96adb4c3f)
+
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b583813a-6e77-424e-bc7f-03b5a29cfc8c)
+
+
+* POST
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/d7902205-e77a-4a0e-ba97-147b2cf9000b)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/4c14cf58-d9d0-44d0-be9d-c7cb6f5b7743)
+
+* DELETE
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/ccf53435-84a9-4c3a-bce4-5c275352e70c)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/1eeeca41-aa9e-471f-a630-b2655da489b8)
+
+
 # Resultados en Grafana 
-
-
-# MariaDB
-
-
 
 # MariaDB Galera
 
@@ -212,10 +229,35 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/7cd93960-d02a-4b62-b266-c079d5edd66d)
 
+* GET
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/1ac52615-f6d4-41ef-8a2c-b0be51344ee6)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/eb07ee81-8c03-41b1-94f8-b1db90e5ee35)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/48152796-9926-4481-83af-39faa391eaaf)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/86d848cc-e840-450d-9dda-d5d5349d135b)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/1ea9d0b1-da05-4b0a-8604-acba2c2c8494)
+
+* POST
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/3bd401a0-4f19-4af3-8441-1c9462451c8e)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/fe848003-0fa9-4664-9d78-8c047a2bc7a4)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/37c6f04c-a19e-4fe7-9b14-2744e9a4c078)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/18444b59-16df-476d-a53c-e6b7f1bb44d8)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/88e2a8f6-3458-42d8-abff-57021a292242)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/165c3901-acbf-4ff1-af65-faa1bd0a9941)
 
 # PostGreSQL
 
-## Loadtest GET
+* GET
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1743530-bd54-467d-a34d-9ec2dea569f5)
 
@@ -234,18 +276,40 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/859f7c71-8211-4df7-bbf0-46e1c4a1d06d)
 
-![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1cfe9cf-dfb4-45d6-82c7-0ff96adb4c3f)
+* POST
+  
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f3736033-194b-49f6-b163-bc309969bbbf)
 
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/881a96de-5848-4fd7-a639-49d4dfc844b6)
 
-![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b583813a-6e77-424e-bc7f-03b5a29cfc8c)
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/2c144033-a79b-4f39-ac69-a238be24e419)
 
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/76dc7127-5703-44a6-b657-f6ab8ed2c6c9)
 
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/54e0681b-a8d4-4ad3-a0db-45f82c70c8b7)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/02b442d8-169f-4a85-9c85-bd90d05872df)
+
+* DELETE
+  
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/4a7299ef-c59c-472b-9647-d078f3361593)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f8700f89-10e3-4f12-8c85-5ee04d1ef65f)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/17c9b50c-711a-4873-91f1-934399d3fd7c)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/afc2abbd-40e8-4944-b1ce-cea05782432b)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/6b12be4b-9d89-4136-80c8-16d1315eca84)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/094f8a49-8b55-427b-bb18-9f83ec3f7610)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/2dd76584-da23-4711-a8fb-921c9f1f87c6)
 
 
 # PostGRE HA
 
 Debido a distintos bugs en la API junto con una mal funcionamiento de gatling en la carga de datos masivos, no se lograron realizar las pruebas más intensivas, aun así fue posible rescatar unas gráficas de grafana las cuales mostramos a continuación.
-
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/7772ec3e-21f2-4467-adb1-769102b1818b)
 
@@ -253,9 +317,16 @@ Debido a distintos bugs en la API junto con una mal funcionamiento de gatling en
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/924cfd61-6718-406e-b9f9-418b1914bcf5)
 
+# Análisis de Resultados 
+
+PostgreSQL: En el informe de Gatling, PostgreSQL mostró un buen tiempo de respuesta, lo que sugiere que pudo manejar eficazmente el flujo constante de usuarios y consultas durante las pruebas de carga. Aunque el monitoreo en Grafana indicó un aumento en el uso de CPU y memoria en PostgreSQL High Availability, estos recursos aún se mantuvieron dentro de límites aceptables, lo que respalda la robustez del sistema. 
+
+MariaDB Galera : Se demostró un rendimiento satisfactorio en el informe de Gatling, con tiempos de respuesta aceptables. Esto es coherente con la función de alta disponibilidad de MariaDB Galera, que proporcionó un tiempo de respuesta incluso más rápido, lo que podría considerarse una ventaja en entornos donde la velocidad es esencial. Dado que solo PostgreSQL y MariaDB Galera funcionaron de manera efectiva durante las pruebas de carga, es importante destacar esta fortaleza en comparación con otras bases de datos evaluadas.
+
 # Conclusiones derivadas de los resultados de las pruebas de carga
 
 El propósito de las pruebas de carga fue simular el comportamiento real de una base de datos, manteniendo un flujo constante de usuarios y consultas. A pesar de esto, los resultados mostraron una falta de cambios drásticos entre las distintas pruebas. Es importante señalar que, en la vida real, los usuarios no actúan de manera constante, por lo que los resultados obtenidos no reflejan de manera realista la operación cotidiana. Sin embargo, estas pruebas ayudan a identificar problemas potenciales que pueden surgir en diversos escenarios.
+
 
 # Aspectos Adicionales
 
@@ -312,6 +383,7 @@ Desarrollar la mentalidad de aprendizaje continuo es valioso no solo para la tar
 * Reuniones de Seguimiento Regular
 
 Es fundamental programar reuniones periódicas para evaluar el progreso de la tarea. Estas reuniones permiten mantener a todos los miembros del equipo actualizados y proporcionan un espacio para discutir desafíos y soluciones. Siguiendo el ejemplo del profesor o utilizando una metodología de gestión de proyectos, asegurándose de mantener una estructura organizativa sólida para la tarea. Esto incluye la definición de objetivos claros y la asignación de responsabilidades.
+
 
 
 
