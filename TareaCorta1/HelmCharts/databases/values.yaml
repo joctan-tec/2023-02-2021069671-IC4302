@@ -33,20 +33,16 @@ mariadb-galera:
   db:
     password: "tc1"
 
-elasticsearch:
-
-  clusterName: "elasticsearch"
-  nodeGroup: "master"
-  replicas: 3
-  minimumMasterNodes: 1
+elastic:
   enabled: false
   version: 8.6.1
-  name: elastic-tc1
+  replicas: 1
+  name: elastic
 
 kibana:
   version: 8.6.1
   replicas: 1
-  name: elastic-tc1
+  name: kibana
 
 prometheus-elasticsearch-exporter:
   env:

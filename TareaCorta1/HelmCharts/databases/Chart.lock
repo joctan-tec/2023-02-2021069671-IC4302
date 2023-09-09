@@ -17,8 +17,5 @@ dependencies:
 - name: prometheus-elasticsearch-exporter
   repository: https://prometheus-community.github.io/helm-charts
   version: 5.0.0
-- name: eck-operator
-  repository: https://helm.elastic.co
-  version: 2.6.1
-digest: sha256:13c838f08cc6b9c3eeacbf564e209a5dd31fec2e3e6f356d27eeceee052bddec
-generated: "2023-09-05T02:16:49.304231885-06:00"
+digest: sha256:778f1e16cb26bfb823b2c81c47d067e4a3199930c0651119dcd52bbf89938c1f
+generated: "2023-09-08T18:36:14.46703448-06:00"

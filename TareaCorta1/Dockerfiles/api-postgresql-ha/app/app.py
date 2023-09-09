@@ -53,16 +53,17 @@ def summaries():
     if request.method == 'POST':
         # Obtener un libro random
         bookRand = random.choice(data)
-
+        conn.autocommit = False  # Desactiva el modo de autocommit
+        cursor.execute("SET TRANSACTION READ WRITE")
         # id(identity), nombre, resumen, categoria
-        args = (bookRand[1], bookRand[2], bookRand[3])
+        args = (bookRand[0], bookRand[1], bookRand[2], bookRand[3])
 
         # query
-        sql = """ INSERT INTO Libros (name, summary, category) 
-                VALUES ( %s, %s, %s)"""
+        sql = """ INSERT INTO Libros (id, name, summary, category) 
+                VALUES (%s, %s, %s, %s)"""
 
         cursor = cursor.execute(sql, args)
-        conn.commit()
+        cursor.execute("COMMIT;")
         conn.close()
         return f"Se agregó: {bookRand}", 201
 # ________________________________________________________________________
@@ -76,18 +77,22 @@ def summary_by_id(id):
     summary = None
     # GET por id___________________________________
     if request.method == 'GET':
+        cursor.execute("SET TRANSACTION READ WRITE")
         cursor.execute("SELECT * FROM Libros WHERE id+?", (id,))
         rows = cursor.fetchall()
         for r in rows:
             summary = r
         if summary is not None:
+            cursor.execute("COMMIT;")
             conn.close()
             return jsonify(summary), 200
         else:
+            cursor.execute("COMMIT;")
             conn.close()
             return "Not found", 404
     # Actualizar _________________________________
     if request.method == 'PUT':
+        cursor.execute("SET TRANSACTION READ WRITE")
         query = """UPDATE Libros
                     SET name = %s,
                         summary = %s,
@@ -101,20 +106,40 @@ def summary_by_id(id):
 
         if (result != []):
             cursor.execute(query, args)
-            conn.commit()
+            cursor.execute("COMMIT;")
             conn.close()
             return "Se actualizó: {}".format(id), 200
         else:
+            cursor.execute("COMMIT;")
             conn.close()
             return "ID {} no existe".format(id), 404
     # Borrar ______________________________________
     if request.method == 'DELETE':
+        cursor.execute("SET TRANSACTION READ WRITE")
         query = """DELETE FROM Libros WHERE id = %s"""
         cursor.execute(query, (id,))
-        conn.commit()
+        cursor.execute("COMMIT;")
         conn.close()
         return "Se eliminó: {}".format(id), 200
 
+def crearTabla():
+    conn = db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SET TRANSACTION READ WRITE")
+    query = """
+    CREATE TABLE IF NOT EXISTS Libros (
+        id INT NULL,
+        name VARCHAR(100) NULL,
+        summary VARCHAR(1000) NULL,
+        category VARCHAR(100) NULL,
+        PRIMARY KEY (id));
+    """
+    print("Se creó la tabla")
+    cursor.execute(query)
+    cursor.execute("COMMIT;")
+    conn.close()
+
+crearTabla()
 '''
 # Main
 if __name__ == '__main__':
