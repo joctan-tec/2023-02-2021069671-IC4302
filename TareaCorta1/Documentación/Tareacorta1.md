@@ -109,6 +109,25 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 
 <img src="imgs/guia8.png" alt="Figura5. exportCart" width="320"/>
 
+
+Una vez se haya escogido la base de datos que se va a correr se va a ingresar al folder de los helmcharts para instalar las bases. Para esto se van a ejecutar los siguientes comandos:
+
+
+**`cd ..`**
+
+**`cd Helmcharts`**
+
+Una vez se esta en la carpeta de los helm charts se va a correr el código de automatización, este instala todos los helm charts necesarios para la ejecución correcta del programa. Para esto se ejecutan los comandos:
+
+**`dos2unix automatizacion.sh`**
+
+**`./automatizacion.sh`**
+
+Esto comenzará a instalar automáticamente todo, una vez termine se verá algo asi:
+
+
+
+
 # Resultados de las pruebas
 
 1- MariaDB

@@ -43,7 +43,7 @@ def populate_table(num_rows):
         conn.commit()
         conn.close()
 
-@app.route('/books', methods=['GET', 'POST', 'DELETE', ' PUT'])
+@app.route('/books', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def books():
     if request.method == 'GET':
 

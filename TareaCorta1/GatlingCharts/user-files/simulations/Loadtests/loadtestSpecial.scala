@@ -37,7 +37,7 @@ class LoadTestPut extends Simulation {
     delete.inject(constantUsersPerSec(10) during (2 minutes)),
     get.inject(constantUsersPerSec(10) during (2 minutes)),
     post.inject(constantUsersPerSec(10) during (6 minutes)),
-    get.inject(constantUsersPerSec(10) during (2 minutes)),
+    get.inject(constantUsersPerSec(10) during (1 minutes)),
     
   ).protocols(httpProtocol)
 
