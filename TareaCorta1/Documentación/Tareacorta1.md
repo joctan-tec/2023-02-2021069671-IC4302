@@ -11,8 +11,8 @@
 * Angel Jiménez Valverde - 2021436942
 * Joselyn Priscilla Jiménez Salgado - 2021022576
 * Jose Ricardo Cardona Quesada - 2021022613
-* Joctan Antonio Porras Esquivel 2021069671
-* Justin Acuña Barrantes 2018093451
+* Joctan Antonio Porras Esquivel - 2021069671
+* Justin Acuña Barrantes - 2018093451
 
 # Guía de Instalación
 
@@ -108,6 +108,17 @@ La base de datos que se desea testear se le pone valor enabled: true
 El resto es necesario asegurarse que tengan el valor enabled: false
 
 <img src="imgs/guia8.png" alt="Figura5. exportCart" width="320"/>
+
+# Configuración de las pruebas
+
+1- PostGreSQL
+GET 
+![image](![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/19de8287-fc5f-4a16-a2e8-9bde8e49f10b)
+)
+
+
+
+
 
 # Resultados de las pruebas 
 
