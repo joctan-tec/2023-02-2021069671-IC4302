@@ -282,9 +282,6 @@ Debido a distintos bugs en la API junto con una mal funcionamiento de gatling en
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/643a4165-f600-4921-8702-e538acc97d10)
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/924cfd61-6718-406e-b9f9-418b1914bcf5)
->>>>>>> 3eef230fb86a98f6b7b2ee839b9ce93286fd8694
-
-
 
 # Conclusiones derivadas de los resultados de las pruebas de carga
 
