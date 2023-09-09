@@ -190,7 +190,7 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 
 # PostGRE HA
-
+Debido a distintos bugs en la API junto con una mal funcionamiento de gatling en la carga de datos masivos, no se lograron realizar las pruebas más intensivas, aun así fue posible rescatar unas gráficas de grafana las cuales mostramos a continuación.
 
 # ElasticSearch 
 
