@@ -18,7 +18,7 @@ class LoadTestPut extends Simulation {
   // 100 Usuarios constantes usaran el api en esa funcionalidad por 20minutos
   setUp(
     put.inject(
-      constantUsersPerSec(100) during(20 minutes)
+      constantUsersPerSec(100) during(5 minutes)
     )
   ).protocols(httpProtocol)
 

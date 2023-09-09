@@ -124,7 +124,7 @@ Una vez se esta en la carpeta de los helm charts se va a correr el código de au
 **`./automatizacion.sh`**
 
 Esto comenzará a instalar automáticamente todo, una vez termine se verá algo asi:
-
+<img src="imgs/guia9.png" alt="Figura5. exportCart" width="320"/>
 
 
 
@@ -168,16 +168,6 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/afad8ce7-9be1-4c36-aa0e-f5068143624a)
 
-
-# PostGreSQL
-
-![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1cfe9cf-dfb4-45d6-82c7-0ff96adb4c3f)
-
-
-![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b583813a-6e77-424e-bc7f-03b5a29cfc8c)
-
-
-
 # Resultados en Grafana 
 
 
@@ -208,6 +198,8 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 # PostGreSQL
 
+## Loadtest GET
+
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1743530-bd54-467d-a34d-9ec2dea569f5)
 
 
@@ -224,6 +216,13 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/859f7c71-8211-4df7-bbf0-46e1c4a1d06d)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1cfe9cf-dfb4-45d6-82c7-0ff96adb4c3f)
+
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b583813a-6e77-424e-bc7f-03b5a29cfc8c)
+
+
 
 
 # PostGRE HA
