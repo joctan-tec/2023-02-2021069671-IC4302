@@ -125,13 +125,7 @@ Una vez se esta en la carpeta de los helm charts se va a correr el código de au
 
 Esto comenzará a instalar automáticamente todo, una vez termine se verá algo asi:
 
-
-
-
 # Resultados de las pruebas
-
-
-# MariaDB
 
 
 # MariaDB Galera
@@ -191,11 +185,6 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 
 # Resultados en Grafana 
-
-
-# MariaDB
-
-
 
 # MariaDB Galera
 
@@ -296,18 +285,20 @@ Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó
 
 
 # PostGRE HA
-<<<<<<< HEAD
+
 Debido a distintos bugs en la API junto con una mal funcionamiento de gatling en la carga de datos masivos, no se lograron realizar las pruebas más intensivas, aun así fue posible rescatar unas gráficas de grafana las cuales mostramos a continuación.
-=======
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/7772ec3e-21f2-4467-adb1-769102b1818b)
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/643a4165-f600-4921-8702-e538acc97d10)
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/924cfd61-6718-406e-b9f9-418b1914bcf5)
->>>>>>> 3eef230fb86a98f6b7b2ee839b9ce93286fd8694
 
+# Análisis de Resultados 
 
+PostgreSQL: En el informe de Gatling, PostgreSQL mostró un buen tiempo de respuesta, lo que sugiere que pudo manejar eficazmente el flujo constante de usuarios y consultas durante las pruebas de carga. Aunque el monitoreo en Grafana indicó un aumento en el uso de CPU y memoria en PostgreSQL High Availability, estos recursos aún se mantuvieron dentro de límites aceptables, lo que respalda la robustez del sistema. 
+
+MariaDB Galera : Se demostró un rendimiento satisfactorio en el informe de Gatling, con tiempos de respuesta aceptables. Esto es coherente con la función de alta disponibilidad de MariaDB Galera, que proporcionó un tiempo de respuesta incluso más rápido, lo que podría considerarse una ventaja en entornos donde la velocidad es esencial. Dado que solo PostgreSQL y MariaDB Galera funcionaron de manera efectiva durante las pruebas de carga, es importante destacar esta fortaleza en comparación con otras bases de datos evaluadas.
 
 # Conclusiones derivadas de los resultados de las pruebas de carga
 
