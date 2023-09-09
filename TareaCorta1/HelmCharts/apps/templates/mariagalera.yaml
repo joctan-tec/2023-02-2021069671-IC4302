@@ -95,7 +95,7 @@ spec:
               key: mariadb-password
               optional: false
         command: ["/bin/sh"]
-        args: ["-c", "mysql -p$(DB_PASS) -u root -h$(DB_HOST) < /scripts/babynames.sql; mysql -p$(DB_PASS) -u root -h$(DB_HOST) -e 'SHOW DATABASES'"]
+        args: ["-c", "mysql -p$(DB_PASS) -u root -h$(DB_HOST) < /scripts/mariadbgal.sql; mysql -p$(DB_PASS) -u root -h$(DB_HOST) -e 'SHOW DATABASES'"]
       restartPolicy: Never
   backoffLimit: 10
 {{ end }}

@@ -16,21 +16,27 @@ class Data:
 
 
 class Connection:
-    __instance = None
     __connection = None
     __cursor = None
 
-    def __new__(self):
-        if (self.__instance == None):
-            self.__connection = mariadb.connect(
+    def __init__(self):
+        self.__connection = mariadb.connect(
                                 host=os.getenv('Mariagalera_HOST'),
                                 port=3306,
                                 database=os.getenv('Mariagalera_DB'),
                                 user=os.getenv('MariagaleraUSER'),
                                 password=os.getenv('Mariagalera_PASS')
                                 )
-            self.__instance = super(Connection,self).__new__(self)
-        return self.__instance
+        
+        self.__connection.cursor().execute('''CREATE TABLE IF NOT EXISTS `summaries` (
+                                            `id` int NOT NULL AUTO_INCREMENT,
+                                            `book_name` varchar(128) NOT NULL,
+                                            `summary` varchar(2048) NOT NULL,
+                                            `category` varchar(128) NOT NULL,
+                                            PRIMARY KEY (`id`)
+                                            ) ENGINE=InnoDB;''')
+        self.__connection.commit()
+        
     
     def getConnection(self):
         if (self.__connection == None):
@@ -49,6 +55,7 @@ class Connection:
     
     def getCursor(self):
         self.getConnection()
+
         self.__cursor = self.__connection.cursor()
         return self.__cursor
     def closeCursor(self):
@@ -69,10 +76,12 @@ def index():
 # |                           SELECT / INSERT                                            |
 #_|______________________________________________________________________________________|
 
-@app.route('/summaries', methods=['GET','POST'])
+@app.route('/books', methods=['GET','POST'])
 def summaries():
     if (request.method == 'GET'):
-        cursor = Connection().getCursor()
+        conn = Connection().getConnection()
+        cursor = conn.cursor()
+        
         
         cursor.execute('SELECT id, book_name, summary, category FROM summaries;')
         sumaryList = [
@@ -84,6 +93,8 @@ def summaries():
         else:
             return 'No found',404
     elif (request.method == 'POST'):
+        conn = Connection().getConnection()
+        cursor = conn.cursor()
         randomBook = Data().getRandomBook()
         print(randomBook)
         # id_book(ignored bcz it's identity), book_name, summary, category
@@ -94,10 +105,11 @@ def summaries():
         query = '''INSERT INTO summaries(book_name, summary, category)
                    VALUES(%s,%s,%s);'''
 
-        Connection().getCursor().execute(query , arg)
-        Connection().getConnection().commit()
-        Connection().closeCursor()
-        Connection().closeConenection()
+        cursor.execute(query , arg)
+        conn.commit()
+        cursor.close()
+        conn.close()
+       
         return f"Se agregó: {randomBook}", 201
 
 
@@ -105,9 +117,10 @@ def summaries():
 # |                           SELECT / UPDATE / DELETE                                   |
 #_|______________________________________________________________________________________|
 
-@app.route("/summaries/<int:pId>",methods=['GET','PUT','DELETE'])
+@app.route("/books/<int:pId>",methods=['GET','PUT','DELETE'])
 def summariesID(pId):
-    cursor = Connection().getCursor()
+    conn = Connection().getConnection()
+    cursor = conn.cursor()
 
     if (request.method == 'GET'):
         query = '''SELECT id, book_name, summary, category FROM summaries
