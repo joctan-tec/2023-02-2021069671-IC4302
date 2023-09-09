@@ -26,7 +26,7 @@ class LoadTestGet extends Simulation {
 
   // Va subiendo los usuarios de 10 a 100 en los primeros 5 minutos y luego constantemente todos iran haciendo gets durante 20min
   setUp(
-    delete.inject(
+    get.inject(
       rampUsersPerSec(10) to(100) during(5 minutes),
       constantUsersPerSec(100) during(20 minutes)
     )

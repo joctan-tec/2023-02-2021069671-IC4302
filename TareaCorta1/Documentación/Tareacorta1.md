@@ -79,7 +79,18 @@ Una vez que hayas realizado este cambio, ejecuta los siguientes comandos en la t
 Estos comandos instalarán todas las imágenes de los APIs en repositorios separados para su uso posterior durante la ejecución del programa.
 
 ## Instalación de Helm Charts
-Una vez se hayan instalado las imágenes para los API de las bases de datos es necesario escoger cuál base se desea hacer loadTest. Para esto es necesario ingresar a la carpeta HelmCharts/ Databases/ values.yaml
+Una vez se hayan instalado las imágenes para los API de las bases de datos es necesario escoger cuál base se desea hacer loadTest. Para esto es necesario ingresar a la carpeta HelmCharts/ Databases/ values.yaml desde la UI de visual code, una vez ahi se verán los siguientes parámetros
+
+<img src="imgs/guia6.png" alt="Figura5. exportCart" width="2000"/>
+
+En este espacio podrán observarse todas las bases de datos disponibles para monitorear. Sin embargo, por cuestiones de espacio no se pueden ejecutar todas al mismo tiempo. Por lo tanto es necesario hacer lo siguiente:
+
+La base de datos que se desea testear se le pone valor enabled: true
+<img src="imgs/guia7.png" alt="Figura5. exportCart" width="350"/>
+
+El resto es necesario asegurarse que tengan el valor enabled: false
+
+<img src="imgs/guia8.png" alt="Figura5. exportCart" width="320"/>
 
 # Conclusiones y Recomendaciones
 
