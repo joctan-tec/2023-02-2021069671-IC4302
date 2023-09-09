@@ -122,9 +122,9 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 * GET 3
   ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/2fb3a50e-2b83-4d65-88df-992bb2d8e8f9)
 
+  * GET 4
+  ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/ff60bc1b-ed74-4411-80c3-acae0362cf60)
 
-  
-  
 
 
 
