@@ -22,10 +22,26 @@ def db_connection():
         print('No se pudo conectar a la base de datos')
     return conn
 
-#lista_libros = panda.read_csv('books-summaries.csv')
-#df = panda.DataFrame(lista_libros.values, columns=['id', 'name', 'summary', 'category'])
-#diccionario_libros = df.to_dict(orient='records')
+def generar_datos_pruebas(num_rows):
+    
+    lista_libros = panda.read_csv("books-summaries.csv", nrows=num_rows)
+    df = panda.DataFrame(lista_libros.values, columns=['id', 'name', 'summary', 'category'])
+    diccionario_libros = df.to_dict(orient='records')
+    return diccionario_libros
 
+def populate_table(num_rows):
+    
+    sql = """INSERT INTO libros (name, summary, category)
+                VALUES(%s,%s,%s)"""
+    
+    libros = generar_datos_pruebas(num_rows) 
+  
+    for libro in libros:
+        conn = db_connection()
+        cursor = conn.cursor()
+        cursor.execute(sql,(libro['name'],libro['summary'],libro['category']))
+        conn.commit()
+        conn.close()
 
 @app.route('/books', methods=['GET', 'POST'])
 def books():
@@ -123,3 +139,6 @@ def libro_indiv(id):
         conn.commit()
         conn.close()
         return "The book with the id: {} has been deleted".format(id), 200
+    
+    
+populate_table(73)  

@@ -22,7 +22,7 @@ mariadb:
 mariadb-galera:
   enabled: false
   version: 7.4.14
-  replicaCount: 3
+  replicaCount: 2
   metrics:
     enabled: false
     serviceMonitor:
@@ -79,9 +79,9 @@ postgresql-ha:
 postgresql:
   enabled: false
   metrics:
-    enabled: true
+    enabled: false
     serviceMonitor:
-      enabled: true
+      enabled: false
       namespace: "monitoring"
   auth:
     postgresPassword: "1234"
@@ -98,5 +98,5 @@ mongodb:
       enabled: true
       namespace: "monitoring"
   auth:
-     rootPassword: "tc1"
+    rootPassword: "tc1"
 

@@ -1,0 +1,101 @@
+# This helm chart only runs if postgres is enabled
+{{ if .Values.config.database.mariadbgalera.enabled }}
+---
+# Deployment definition
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.config.apiMariagalera.name }}
+  labels:
+    app: {{ .Values.config.apiMariagalera.nameApp }}
+spec:
+  replicas: {{ .Values.config.apiMariagalera.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.config.apiMariagalera.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.config.apiMariagalera.name }}
+    spec:
+      containers:
+      - name: {{ .Values.config.apiMariagalera.name }}
+        image: {{ .Values.config.apiMariagalera.image }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        env:
+        - name: Mariagalera_HOST
+          value: "databases-mariadbgal"
+        - name: Mariagalera_PASS
+          valueFrom:
+            secretKeyRef:
+              name: databases-mariadbgal
+              key: mariadb-password
+              optional: false
+        - name: Mariagalera_DB
+          value: 'my_database'
+        - name: MariagaleraUSER
+          value: 'root'
+        - name: Mariagalera_PORT
+          value: '3306'
+---
+# Service definition
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.config.apiMariagalera.nameApp }}
+  labels:
+    app: {{ .Values.config.apiMariagalera.nameApp }}
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+    nodePort: 30000
+  selector:
+    app: {{ .Values.config.apiMariagalera.nameApp }}
+  type: NodePort
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.config.mariagaleraclient.mapName }}
+  namespace: {{ .Values.config.mariagaleraclient.namespace }}
+data:
+{{ (.Files.Glob "database-schemas/mariadbgal-schema/mariadbgal.sql").AsConfig | indent 2 }}
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.config.mariagaleraclient.name }}
+spec:
+  template:
+    spec:
+      volumes:
+      - name: {{ .Values.config.mariagaleraclient.volumeName }}
+        configMap:
+          name: {{ .Values.config.mariagaleraclient.mapName }}
+          defaultMode: 0777
+      containers:
+      - name: pi
+        image: {{ .Values.config.mariagaleraclient.image }}
+        volumeMounts:
+        - name: {{ .Values.config.mariagaleraclient.volumeName }}
+          mountPath: /scripts
+        env:
+        - name: DB_HOST
+          value: "databases-mariadbgal"
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: databases-mariadbgal
+              key: mariadb-password
+              optional: false
+        command: ["/bin/sh"]
+        args: ["-c", "mysql -p$(DB_PASS) -u root -h$(DB_HOST) < /scripts/babynames.sql; mysql -p$(DB_PASS) -u root -h$(DB_HOST) -e 'SHOW DATABASES'"]
+      restartPolicy: Never
+  backoffLimit: 10
+{{ end }}
