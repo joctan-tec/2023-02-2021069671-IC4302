@@ -116,6 +116,14 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 * GET 1
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1743530-bd54-467d-a34d-9ec2dea569f5)
 
+* GET 2
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/25e4ad56-8741-4841-a38c-ae50b5b5a502)
+
+* GET 3
+  ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/2fb3a50e-2b83-4d65-88df-992bb2d8e8f9)
+
+
+  
   
 
 
@@ -128,6 +136,7 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 2- MariaDB Galera
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b4e47e4d-53f3-4c3d-b202-27799de167fe)
+
 Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó.
 
 3- PostGreSQL
