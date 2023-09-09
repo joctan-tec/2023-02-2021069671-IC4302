@@ -112,10 +112,11 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 # Configuración de las pruebas
 
 1- PostGreSQL
-GET 
-![image](![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/19de8287-fc5f-4a16-a2e8-9bde8e49f10b)
-)
 
+* GET 1
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1743530-bd54-467d-a34d-9ec2dea569f5)
+
+  
 
 
 
