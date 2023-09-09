@@ -142,7 +142,7 @@ def books():
         cursor.execute(sql,(nombre,resumen,category,indice_modificar))
         conn.commit()
         conn.close()
-        return "The book with the id: {} has been deleted".format(id_borrar), 200
+        return "The book with the id: {} has been modified".format(indice_modificar), 200
 
 # Se inserta esa cantidad de datos del dataset en la base de datos
 populate_table(80)  
