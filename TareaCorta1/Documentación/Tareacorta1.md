@@ -226,7 +226,7 @@ Debido a distintos bugs en la API junto con una mal funcionamiento de gatling en
 
 
 
-# Conclusiones de los resultados de las pruebas de carga
+# Conclusiones derivadas de los resultados de las pruebas de carga
 
 
 # Aspectos Adicionales
