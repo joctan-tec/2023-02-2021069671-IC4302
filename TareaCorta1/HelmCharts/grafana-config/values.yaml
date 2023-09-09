@@ -19,8 +19,8 @@ dashboards:
   
   postgresql-ha:
     name: postgresqlha
-    file: postgresqlha.json
-    enable: true
+    file: postgresql.json 
+    enable: false
 
   postgresql:
     name: postgresql

@@ -14,13 +14,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
 
--- -----------------------------------------------------
--- Table `mydb`.`Libros`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Libros` ;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8;
+USE `mydb`;
+
+-- Table Libros
+
+DROP TABLE IF EXISTS `mydb`.`Libros`;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Libros` (
   `idLibros` INT NULL,
@@ -30,7 +30,10 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Libros` (
   PRIMARY KEY (`idLibros`))
 ENGINE = InnoDB;
 
+-- Borrar registros
+DELETE FROM Libros;
 
+-- Reiniciar modos
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

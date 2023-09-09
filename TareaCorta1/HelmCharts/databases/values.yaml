@@ -73,11 +73,11 @@ postgresql-ha:
       adminPassword: "tc1"
 
 postgresql:
-  enabled: false
+  enabled: true
   metrics:
-    enabled: false
+    enabled: true
     serviceMonitor:
-      enabled: false
+      enabled: true
       namespace: "monitoring"
   auth:
     postgresPassword: "1234"
