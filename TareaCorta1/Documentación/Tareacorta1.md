@@ -11,8 +11,8 @@
 * Angel Jiménez Valverde - 2021436942
 * Joselyn Priscilla Jiménez Salgado - 2021022576
 * Jose Ricardo Cardona Quesada - 2021022613
-* Joctan Antonio Porras Esquivel 2021069671
-* Justin Acuña Barrantes 2018093451
+* Joctan Antonio Porras Esquivel - 2021069671
+* Justin Acuña Barrantes - 2018093451
 
 # Guía de Instalación
 
@@ -109,32 +109,70 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 
 <img src="imgs/guia8.png" alt="Figura5. exportCart" width="320"/>
 
-# Resultados de las pruebas 
+# Resultados de las pruebas
 
 1- MariaDB
 
 2- MariaDB Galera
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b4e47e4d-53f3-4c3d-b202-27799de167fe)
+
 Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó.
+
 
 3- PostGreSQL
 
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1cfe9cf-dfb4-45d6-82c7-0ff96adb4c3f)
+
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b583813a-6e77-424e-bc7f-03b5a29cfc8c)
+
 4- PostGRE HA
 
-5- ElasticSearch 
-
-
+5- Elasticsearch 
 
 # Resultados en Grafana 
 
 1- MariaDB
 
+
 2- MariaDB Galera
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/00e31958-151d-4b96-a25b-5669f6bc9c44)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/74feed88-810d-4439-84af-85c3bc52d916)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/bf86d5a2-95d8-4c60-a0b8-47b7d70d1215)
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/ec5c1b49-b5fa-4809-a685-76df024ba296)
+
+
+
 
 3- PostGreSQL
 
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1743530-bd54-467d-a34d-9ec2dea569f5)
+
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/25e4ad56-8741-4841-a38c-ae50b5b5a502)
+
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/2fb3a50e-2b83-4d65-88df-992bb2d8e8f9)
+
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/ff60bc1b-ed74-4411-80c3-acae0362cf60)
+
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/7d9bdda4-d7de-4fda-8861-607f0b8dc6d2)
+
+
+![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/859f7c71-8211-4df7-bbf0-46e1c4a1d06d)
+
+
+
 4- PostGRE HA
+
+
 
 5- ElasticSearch 
 
