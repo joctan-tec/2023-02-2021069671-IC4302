@@ -165,9 +165,9 @@ def libro_indiv(id):
         return jsonify(libro_actualizado)
 
 # Se inserta esa cantidad de datos del dataset en la base de datos
-#populate_table(80)  
+populate_table(80)  
 
 # Para probar operaciones delete
 # Con esto se inserta el dataset en la base dos veces para un total de 10400 datos para borrar
-populate_table(5200)
-populate_table(5200)
+#populate_table(5200)
+#populate_table(5200)
