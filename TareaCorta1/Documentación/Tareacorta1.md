@@ -111,11 +111,13 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 
 # Resultados de las pruebas
 
-1- MariaDB
+# MariaDB
 
-2- MariaDB Galera
+# MariaDB Galera
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b4e47e4d-53f3-4c3d-b202-27799de167fe)
+
+Durante la prueba de PUT (Update), la base de datos dejó de responder y cayó.
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b4f14eaf-d021-4c1b-a503-ded87541052a)
 
@@ -129,23 +131,23 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/474a0216-ceaa-4876-99ec-ed39225cabd8)
 
-3- PostGreSQL
+# PostGreSQL
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1cfe9cf-dfb4-45d6-82c7-0ff96adb4c3f)
 
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/b583813a-6e77-424e-bc7f-03b5a29cfc8c)
 
-4- PostGRE HA
+# PostGRE HA
 
-5- Elasticsearch 
+# Elasticsearch 
 
 # Resultados en Grafana 
 
-1- MariaDB
+# MariaDB
 
 
-2- MariaDB Galera
+# MariaDB Galera
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/00e31958-151d-4b96-a25b-5669f6bc9c44)
 
@@ -156,7 +158,7 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/ec5c1b49-b5fa-4809-a685-76df024ba296)
 
 
-3- PostGreSQL
+# PostGreSQL
 
 ![image](https://github.com/joctan-tec/2023-02-2021069671-IC4302/assets/99993320/f1743530-bd54-467d-a34d-9ec2dea569f5)
 
@@ -177,11 +179,11 @@ El resto es necesario asegurarse que tengan el valor enabled: false
 
 
 
-4- PostGRE HA
+# PostGRE HA
 
 
 
-5- ElasticSearch 
+# ElasticSearch 
 
 # Aspectos Adicionales
 
