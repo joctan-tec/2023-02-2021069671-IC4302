@@ -239,7 +239,7 @@ Esta aplicación intermedia fue desarrollada en Python utilizando la biblioteca 
 
 * Pruebas locales antes de Docker
 
-A la hora de implementar una imagen en Docker se recomienda probar primero el código que se quiera poner en el contenedor. En nuestro caso con las APIs nos fue increíblemente útil probarlas primero desde un IDE en Python y sin usar Docker. Esto nos salvo bastante tiempo durante el desarrollo y nos ayudo a prevenir confusiones en la detección de errores.
+A la hora de implementar una imagen en Docker se recomienda probar primero el código que se quiera poner en el contenedor. En nuestro caso con las APIs nos fue increíblemente útil probarlas primero desde un IDE en Python y sin usar Docker. Esto nos salvó bastante tiempo durante el desarrollo y nos ayudó a prevenir confusiones en la detección de errores.
 
 * Monitorización y generación de reportes 
 
@@ -247,7 +247,7 @@ Los reportes y visualizaciones que se pueden generar a través de métricas y ti
 
 * Tipos de operaciones en pruebas de carga
 
-A la hora de realizar las pruebas se deben tener en cuenta que distintos tipos de operaciones, incluso con la misma cantidad de usuarios puede llevar a resultados completamente distintos sobre la misma base de datos. Por ejemplo, una operación de GET no tendrá la misma carga que una operación PUT o POST.
+Para la realización de las pruebas se deben tener en cuenta que distintos tipos de operaciones, incluso con la misma cantidad de usuarios puede llevar a resultados completamente distintos sobre la misma base de datos. Por ejemplo, una operación de GET no tendrá la misma carga que una operación PUT o POST.
 
 * Postman para pruebas de API
 
@@ -265,25 +265,21 @@ Además, a medida que el sistema crece y hay nuevos datos, habrá que expandir l
 
 A la hora de probar APIs localmente, usar Docker y Kubernetes facilita el proceso ya que permiten ejecutar el API simultáneamente con otras aplicaciones si fuera necesario. Esto evita tener que detener otros servicios que usen los mismos puertos o recursos. Además, containerizar la API con Docker hace que su ejecución sea consistente en diferentes entornos. El código se ejecutará de la misma forma sin importar el sistema operativo o dependencias del host. 
 
-* Adherirse a Estándares de Codificación
+* Estandares de programación
 
-Establecer y seguir un estándar de codificación dentro del equipo. Esto mejora la consistencia y la legibilidad del código, lo que facilita la colaboración y el mantenimiento. Mantener un enfoque claro en las metas y objetivos, así como dividir las tareas de manera eficiente, garantiza que el equipo pueda avanzar de manera efectiva y evitar desviaciones innecesarias.
+Seguir un estándar de codificación dentro del equipo, mejora la consistencia y la legibilidad del código, lo que facilita la colaboración y depuración del mismo. Distribuir tareas de manera inteligente ayuda a la eficacia del equipo.
 
-* Herramientas de Desarrollo y Control de Versiones
+* Control de Versiones
 
-El dominio de herramientas como GitHub y Docker simplifica enormemente la colaboración en equipo y la gestión de proyectos. Facilitan el seguimiento de cambios, la integración de código y aseguran una ejecución consistente de aplicaciones en diferentes entornos, lo que aumenta la eficiencia y la portabilidad de dicho proyecto. Aprender a utilizar herramientas como GitHub es esencial para el desarrollo colaborativo. Familiarizarse con las funcionalidades básicas de control de versiones y colaboración en repositorios.
-
-* Preservación de la Estructura del Proyecto
-
-Mantener la estructura del proyecto a lo largo del tiempo es esencial para la mantenibilidad y la escalabilidad. Evita el caos y la confusión a medida que el proyecto crece y se desarrolla, lo que ahorra tiempo y recursos en el futuro. Esto facilita la gestión y la colaboración eficiente.
+Mediante el uso de un controlador de versiones como lo es GitHub podemos mantener un orden y registrar cada cambio que le realicemos a nuestros programas. Gracias a esto es más seguro el desarrollo de software de manera colaborativa, y en caso de que surja un problema es posible volver a una versión anterior.
 
 * Aprendizaje Continuo
 
-Desarrollar la mentalidad de aprendizaje continuo es valioso no solo para la tarea actual, sino para el crecimiento a largo plazo como profesional. Siempre buscar oportunidades para adquirir nuevas habilidades y conocimientos. No limitarse a lo que se enseña en clase, es decir, repasar los conceptos aprendidos, investigar y profundizar en el tema. La investigación adicional puede proporcionar ideas frescas y enfoques innovadores para el progreso de la tarea.
+Gracias a esta tarea es posible comprender de una manera más detallada como funciona la observabilidad, y porque es tan usada en la industria, es posible observar como la sobrecarga en una base de datos puede dar un error que cueste muchos recursos como tiempo y dinero.
 
 * Reuniones de Seguimiento Regular
 
-Es fundamental programar reuniones periódicas para evaluar el progreso de la tarea. Estas reuniones permiten mantener a todos los miembros del equipo actualizados y proporcionan un espacio para discutir desafíos y soluciones. Siguiendo el ejemplo del profesor o utilizando una metodología de gestión de proyectos, asegurándose de mantener una estructura organizativa sólida para la tarea. Esto incluye la definición de objetivos claros y la asignación de responsabilidades.
+Para trabajar esta tarea se realizaron reuniones regulares para asignar tareas a cada uno de los integrantes, fue de mucha ayuda trabajar de esta forma, porque se podían resolver dudas en cualquier momento, las herramientas utilizadas fueron Discord(comunicación por llamada) y WhatsApp(texto).
 
 
 
