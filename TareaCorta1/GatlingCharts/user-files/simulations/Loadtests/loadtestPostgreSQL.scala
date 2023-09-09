@@ -31,11 +31,10 @@ class LoadTestGet extends Simulation {
         .check(status.is(200)) 
     )
 
-  // Va subiendo los usuarios de 10 a 100 en los primeros 5 minutos y luego constantemente todos iran haciendo gets durante 20min
+  // 100 Usuarios constantes usaran el api en esa funcionalidad por 20minutos
   setUp(
-    delete.inject(
-      //rampUsersPerSec(10) to(100) during(5 minutes),
-      constantUsersPerSec(10000) during(20 minutes)
+    get.inject(
+      constantUsersPerSec(100) during(20 minutes)
     )
   ).protocols(httpProtocol)
 
